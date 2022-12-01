@@ -39,7 +39,7 @@ pre-commit:
   commands:
     lint:
       glob: '*.{js,ts,jsx,tsx,vue}'
-      exclude: 'tailwind.config.js'
+      exclude: 'tailwind.config.cjs'
       run: pnpx eslint {staged_files}
 
     format:
