@@ -12,7 +12,7 @@ module.exports = {
   ],
   rules: {
     'prettier/prettier': ['error', { singleQuote: true }],
-    'vue/multi-word-component-names': false,
+    'vue/multi-word-component-names': 0,
   },
   overrides: [
     {
