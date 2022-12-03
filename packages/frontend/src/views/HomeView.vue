@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import Button from '@/components/ui/Button.vue';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 </script>
 
 <template>
@@ -8,7 +11,7 @@ import Button from '@/components/ui/Button.vue';
       <h1>Créez vos évènements sportifs</h1>
       <div class="flex gap-4">
         <RouterLink :to="{ name: 'createGroup' }">
-          <Button>Créer un groupe</Button>
+          <Button>{{ t('createNewGroupBtnLabel') }}</Button>
         </RouterLink>
         <Button theme="secondary">Créer un évènement</Button>
       </div>
