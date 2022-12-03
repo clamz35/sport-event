@@ -1,0 +1,13 @@
+h1,
+.h1 {
+  @apply text-sp-48 font-bold font-sp-noto-serif-kr;
+}
+
+h2,
+.h2 {
+  @apply text-3xl font-semibold font-sp-noto-serif-kr;
+}
+
+.sp-container-full-centered {
+  @apply grid place-items-center h-full;
+}
