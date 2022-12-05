@@ -1,3 +1,3 @@
 export default {
-  createNewGroupBtnLabel: 'Create new group',
+  createNewGroupBtnLabel: 'Create a group',
 };
