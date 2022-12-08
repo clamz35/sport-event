@@ -2,9 +2,9 @@
 require('@rushstack/eslint-patch/modern-module-resolution');
 
 module.exports = {
-  root: true,
+  root: false,
   extends: [
-    '@clamz/eslint-config-clamz',
+    '../../eslintrc.cjs',
     'plugin:vue/vue3-essential',
     'eslint:recommended',
     '@vue/eslint-config-typescript',

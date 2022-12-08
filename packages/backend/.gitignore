@@ -35,3 +35,7 @@ lerna-debug.log*
 !.vscode/extensions.json
 
 dockerConfig/postgres-dev-init.sql
+
+.env
+temp
+pgdata
