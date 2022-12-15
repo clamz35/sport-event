@@ -3,7 +3,7 @@ require('@rushstack/eslint-patch/modern-module-resolution');
 
 module.exports = {
   root: true,
-  extends: ['@clamz/eslint-config-clamz'],
+  // extends: ['@clamz/eslint-config-clamz'],
   rules: {
     'prettier/prettier': ['error', { singleQuote: true }],
   },

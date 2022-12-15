@@ -1,10 +1,3 @@
-<script setup lang="ts">
-import Button from '@/components/ui/Button.vue';
-import { useI18n } from 'vue-i18n';
-
-const { t } = useI18n();
-</script>
-
 <template>
   <div class="sp-container-full-centered">
     <div class="flex flex-col gap-36 items-center">
@@ -18,3 +11,9 @@ const { t } = useI18n();
     </div>
   </div>
 </template>
+<script setup lang="ts">
+import Button from 'ui/Button.vue';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
+</script>

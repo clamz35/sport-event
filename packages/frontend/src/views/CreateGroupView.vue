@@ -19,8 +19,8 @@
 </template>
 
 <script setup lang="ts">
-import Button from '@/components/ui/Button.vue';
-import Card from '@/components/ui/Card.vue';
-import FloatingLabeledField from '@/components/ui/FloatingLabeledField.vue';
-import Input from '@/components/ui/Input.vue';
+import Button from 'ui/Button.vue';
+import Card from 'ui/Card.vue';
+import FloatingLabeledField from 'ui/FloatingLabeledField.vue';
+import Input from 'ui/Input.vue';
 </script>

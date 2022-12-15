@@ -38,8 +38,8 @@ pre-commit:
   commands:
     lint:
       glob: '*.{js,ts,jsx,tsx,vue}'
-      exclude: 'tailwind.config.cjs|.eslintrc.js|.eslintrc.cjs'
-      run: pnpx eslint {staged_files} && git add {staged_files}
+      exclude: 'tailwind.config.cjs|.eslintrc.js|.eslintrc.cjs|packages/ui'
+      run: pnpx eslint {staged_files} --resolve-plugins-relative-to . && git add {staged_files}
 
     format:
       glob: '*.{js,ts,jsx,tsx,vue}'

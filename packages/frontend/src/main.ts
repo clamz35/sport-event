@@ -8,6 +8,7 @@ import en from './locales/en';
 
 import './assets/styles/tailwind.scss';
 import './assets/styles/styles.scss';
+import { VueQueryPlugin } from '@tanstack/vue-query';
 
 type MessageSchema = typeof en;
 type AppLocales = 'fr' | 'en';
@@ -26,6 +27,6 @@ const i18n = createI18n<[MessageSchema], AppLocales>({
 
 const app = createApp(App);
 
-app.use(router).use(i18n);
+app.use(router).use(i18n).use(VueQueryPlugin);
 
 app.mount('#app');
