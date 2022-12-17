@@ -1,5 +1,5 @@
 <template>
-  <header class="bg-sp-primary text-sp-primary-contrast">
+  <header class="app-header">
     <Header></Header>
   </header>
   <main>
@@ -12,4 +12,9 @@ import { RouterView } from 'vue-router';
 import Header from './layout/Header.vue';
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+.app-header {
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-contrast));
+}
+</style>

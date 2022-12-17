@@ -6,7 +6,6 @@ import { createI18n } from 'vue-i18n';
 import fr from './locales/fr';
 import en from './locales/en';
 
-import './assets/styles/tailwind.scss';
 import './assets/styles/styles.scss';
 import { VueQueryPlugin } from '@tanstack/vue-query';
 

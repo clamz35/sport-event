@@ -1,5 +1,14 @@
 <template>
-  <div class="card rounded-md bg-sp-primary-contrast text-sp-primary py-6 px-8">
+  <div class="card">
     <slot></slot>
   </div>
 </template>
+
+<style scoped lang="scss">
+.card {
+  border-radius: var(--rounded-300);
+  background-color: hsl(var(--primary-contrast));
+  color: hsl(var(--primary));
+  padding: 1.5rem 2rem;
+}
+</style>

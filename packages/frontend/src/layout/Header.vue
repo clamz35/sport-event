@@ -1,5 +1,19 @@
 <template>
-  <div class="flex items-center px-12 py-6">
-    <div class="text-4xl font-semibold">Sport Event</div>
+  <div class="header">
+    <div class="header__title">Sport Event</div>
   </div>
 </template>
+
+<style scoped lang="scss">
+.header {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem 3rem;
+
+  &__title {
+    font-size: var(--fs-750);
+    font-weight: 500;
+    line-height: 1;
+  }
+}
+</style>

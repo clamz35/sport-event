@@ -1,13 +1,36 @@
+body {
+  font-family: var(--ff-1);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--ff-2);
+}
+
 h1,
 .h1 {
-  @apply text-sp-48 font-bold font-sp-noto-serif-kr;
+  font-size: var(--fs-800);
+  font-weight: 700;
 }
 
 h2,
 .h2 {
-  @apply text-3xl font-semibold font-sp-noto-serif-kr;
+  font-size: var(--fs-700);
+  font-weight: 600;
 }
 
 .sp-container-full-centered {
-  @apply grid place-items-center h-full;
+  display: grid;
+  place-items: center;
+  height: 100%;
+}
+
+#app {
+  display: grid;
+  grid-template-rows: min-content 1fr;
+  min-height: 100vh;
+  background-color: hsl(var(--neutral-100));
 }

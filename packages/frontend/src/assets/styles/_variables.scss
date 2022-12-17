@@ -1,16 +1,33 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-@layer base {
-  :root {
-    --accent: 130deg 80% 67%;
-    --primary: 294deg 34% 12%;
-    --neutral-200: 135deg 15% 95%;
-    --neutral-500: 300deg 2% 48%;
-    --accent-600: 130deg 81% 45%;
-    --primary-contrast: 0deg 0% 100%;
-    --primary-400: 294deg 34% 35%;
-    --neutral-100: 0deg 0% 96%;
-    --neutral-300: 0deg 0% 87%;
-  }
+:root {
+  /* color */
+  --accent: 130deg 80% 67%;
+  --primary: 294deg 34% 12%;
+  --neutral-200: 135deg 15% 95%;
+  --neutral-500: 300deg 2% 48%;
+  --accent-600: 130deg 81% 45%;
+  --primary-contrast: 0deg 0% 100%;
+  --primary-400: 294deg 34% 35%;
+  --neutral-100: 0deg 0% 96%;
+  --neutral-300: 0deg 0% 87%;
+
+  /* Font families */
+
+  --ff-1: 'Cabin';
+  --ff-2: 'Noto Serif KR';
+
+  /* font size */
+
+  --fs-400: 0.875rem;
+  --fs-500: 1rem;
+  --fs-500: 1.125rem;
+  --fs-600: 1.5rem;
+  --fs-700: 2rem;
+  --fs-750: 2.25rem;
+  --fs-800: 3rem;
+
+  /* border radius */
+  --rounded-300: 4px;
+  --rounded-500: 8px;
+  --rounded-600: 10px;
+  --rounded-700: 12px;
 }
