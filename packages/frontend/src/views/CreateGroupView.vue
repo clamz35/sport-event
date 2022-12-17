@@ -12,17 +12,28 @@
       </div>
       <div class="create-group__actions">
         <Button theme="secondary">Annuler</Button>
-        <Button theme="primary">Créer le nouveau groupe</Button>
+        <Button @click="createNewGroup(newGroup)"
+          >Créer le nouveau groupe</Button
+        >
       </div>
     </Card>
   </div>
 </template>
 
 <script setup lang="ts">
+import { useCreateGroup } from '@/composables/group/useCreateGroup';
+import type { GroupDTO } from 'dto/group.dto';
 import Button from 'ui/Button.vue';
 import Card from 'ui/Card.vue';
 import FloatingLabeledField from 'ui/FloatingLabeledField.vue';
 import Input from 'ui/Input.vue';
+import { ref, type Ref } from 'vue';
+
+const newGroup: Ref<GroupDTO> = ref({
+  name: 'Domloup city',
+});
+
+const { mutate: createNewGroup } = useCreateGroup();
 </script>
 
 <style lang="scss" scoped>

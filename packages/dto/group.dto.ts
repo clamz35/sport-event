@@ -1,7 +1,7 @@
-import { EventDTO } from './event.dto';
+import type { EventDTO } from './event.dto';
 
-export class GroupDTO {
-  id!: number;
+export interface GroupDTO {
+  id?: number;
 
   name: string;
 

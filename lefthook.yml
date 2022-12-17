@@ -38,10 +38,9 @@ pre-commit:
   commands:
     lint:
       glob: '*.{js,ts,jsx,tsx,vue}'
-      exclude: '.eslintrc.js|.eslintrc.cjs|packages/ui'
-      run: pnpx eslint {staged_files} --resolve-plugins-relative-to . && git add {staged_files}
+      exclude: '.eslintrc.js|.eslintrc.cjs|packages/ui|packages/dto'
+      run: pnpx eslint {staged_files}  && git add {staged_files}
 
     format:
       glob: '*.{js,ts,jsx,tsx,vue}'
       run: pnpx prettier --write {staged_files} && git add {staged_files}
-

@@ -16,8 +16,9 @@
   },
   "dependencies": {
     "@tanstack/vue-query": "4.19.1",
+    "dto": "workspace:*",
     "sass": "1.56.2",
-    "ui": "workspace:1.0.0",
+    "ui": "workspace:*",
     "vue": "3.2.45",
     "vue-i18n": "9.2.2",
     "vue-router": "4.1.6"
