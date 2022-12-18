@@ -1,15 +1,30 @@
 <template>
-  <input
-    type="text"
-    v-model="value"
-    class="input rounded-md border border-sp-neutral-300 border-solid px-2 py-1"
-  />
+  <div>
+    <input
+      type="text"
+      v-model="value"
+      class="input"
+      :class="{
+        'input--error': error,
+      }"
+    />
+  </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue';
 
-const props = defineProps(['modelValue']);
+const props = withDefaults(
+  defineProps<{
+    modelValue?: string;
+    error?: boolean;
+  }>(),
+  {
+    modelValue: '',
+    error: false,
+  },
+);
+
 const emit = defineEmits(['update:modelValue']);
 
 const value = computed({
@@ -26,6 +41,16 @@ const value = computed({
 .input {
   border-radius: var(--rounded-300);
   border: 1px solid hsl(var(--neutral-300));
-  padding: 0.25rem 8px;
+  padding: 0.5rem 8px;
+  width: 100%;
+
+  &--error {
+    border-color: hsl(var(--error), 0.4);
+    background-color: hsl(var(--error), 0.2);
+
+    &:focus {
+      outline-color: hsl(var(--error));
+    }
+  }
 }
 </style>

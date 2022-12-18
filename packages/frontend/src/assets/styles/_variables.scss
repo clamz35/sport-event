@@ -1,14 +1,16 @@
 :root {
   /* color */
   --accent: 130deg 80% 67%;
-  --primary: 294deg 34% 12%;
-  --neutral-200: 135deg 15% 95%;
-  --neutral-500: 300deg 2% 48%;
   --accent-600: 130deg 81% 45%;
-  --primary-contrast: 0deg 0% 100%;
   --primary-400: 294deg 34% 35%;
+  --primary: 294deg 34% 12%;
+  --primary-contrast: 0deg 0% 100%;
   --neutral-100: 0deg 0% 96%;
+  --neutral-200: 135deg 15% 95%;
   --neutral-300: 0deg 0% 87%;
+  --neutral-500: 300deg 2% 48%;
+
+  --error: 355, 66%, 45%;
 
   /* Font families */
 
