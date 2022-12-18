@@ -118,7 +118,7 @@ importers:
       sass: 1.56.2
       start-server-and-test: 1.15.2
       typescript: 4.9.4
-      ui: workspace:1.0.0
+      ui: workspace:*
       vite: 3.2.5
       vitest: 0.25.6
       vue: 3.2.45

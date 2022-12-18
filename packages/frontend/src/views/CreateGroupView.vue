@@ -4,17 +4,16 @@
       <h1 class="create-group__title h2">Création d'un nouveau groupe</h1>
       <div class="create-group__form">
         <FloatingLabeledField label="Nom du groupe :">
-          <Input></Input>
+          <Input v-model="form.name"></Input>
         </FloatingLabeledField>
         <FloatingLabeledField label="Votre email (Optionnel) :">
-          <Input></Input>
+          <Input v-model="form.creatorEmail"></Input>
         </FloatingLabeledField>
       </div>
+
       <div class="create-group__actions">
         <Button theme="secondary">Annuler</Button>
-        <Button @click="createNewGroup(newGroup)"
-          >Créer le nouveau groupe</Button
-        >
+        <Button @click="handleSubmit()">Créer le nouveau groupe</Button>
       </div>
     </Card>
   </div>
@@ -27,13 +26,28 @@ import Button from 'ui/Button.vue';
 import Card from 'ui/Card.vue';
 import FloatingLabeledField from 'ui/FloatingLabeledField.vue';
 import Input from 'ui/Input.vue';
-import { ref, type Ref } from 'vue';
+import { reactive } from 'vue';
+import { useRouter } from 'vue-router';
 
-const newGroup: Ref<GroupDTO> = ref({
-  name: 'Domloup city',
+const form = reactive<GroupDTO>({
+  name: '',
+  creatorEmail: '',
 });
-
+const router = useRouter();
 const { mutate: createNewGroup } = useCreateGroup();
+
+const handleSubmit = (): void => {
+  createNewGroup(form, {
+    onSuccess(groupCreated): void {
+      router.push({
+        name: 'viewGroup',
+        params: {
+          id: groupCreated.id,
+        },
+      });
+    },
+  });
+};
 </script>
 
 <style lang="scss" scoped>

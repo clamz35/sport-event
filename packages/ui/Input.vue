@@ -1,15 +1,25 @@
 <template>
   <input
     type="text"
-    :value="value"
+    v-model="value"
     class="input rounded-md border border-sp-neutral-300 border-solid px-2 py-1"
   />
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed } from 'vue';
 
-const value = ref('');
+const props = defineProps(['modelValue']);
+const emit = defineEmits(['update:modelValue']);
+
+const value = computed({
+  get() {
+    return props.modelValue;
+  },
+  set(value) {
+    emit('update:modelValue', value);
+  },
+});
 </script>
 
 <style scoped lang="scss">

@@ -17,6 +17,12 @@ const router = createRouter({
       component: (): Promise<CreateGroupViewType> =>
         import('../views/CreateGroupView.vue'),
     },
+    {
+      path: '/group/:id',
+      name: 'viewGroup',
+      component: (): Promise<CreateGroupViewType> =>
+        import('../views/GroupView.vue'),
+    },
   ],
 });
 
