@@ -7,5 +7,5 @@ export interface GroupDTO {
 
   creatorEmail?: string;
 
-  events?: EventDTO;
+  events?: EventDTO[];
 }

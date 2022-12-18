@@ -5,10 +5,12 @@ services:
     container_name: se-postgres
     image: postgres:latest
     volumes:
-      - ./pgdata:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: clamz
       POSTGRES_PASSWORD: 0sportevent0
       POSTGRES_DB: sport-event
     ports:
       - 5432:5432
+volumes:
+  pgdata:

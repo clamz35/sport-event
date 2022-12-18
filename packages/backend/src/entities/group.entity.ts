@@ -6,7 +6,7 @@ import {
   PrimaryKey,
   Property,
 } from '@mikro-orm/core';
-import { GroupRepository } from 'src/repositories/group.repository';
+import { GroupRepository } from '../repositories/group.repository';
 import { EventEntity } from './event.entity';
 
 @Entity({ customRepository: () => GroupRepository })
