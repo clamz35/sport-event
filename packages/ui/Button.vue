@@ -18,7 +18,7 @@ withDefaults(
   }>(),
   {
     theme: 'primary',
-  }
+  },
 );
 </script>
 

@@ -1,10 +1,4 @@
-import {
-  Entity,
-  EntityRepositoryType,
-  ManyToOne,
-  PrimaryKey,
-  Property,
-} from '@mikro-orm/core';
+import { Entity, EntityRepositoryType, ManyToOne, PrimaryKey, Property } from '@mikro-orm/core';
 import { EventRepository } from 'src/repositories/event.repository';
 import { GroupEntity } from './group.entity';
 

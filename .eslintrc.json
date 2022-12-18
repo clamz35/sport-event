@@ -1,5 +1,6 @@
 {
   "root": true,
+  "extends": ["@clamz/eslint-config-clamz"],
   "overrides": [
     {
       "files": ["cypress/e2e/**/*.{cy,spec}.{js,ts,jsx,tsx}"],
@@ -12,7 +13,6 @@
       }
     }
   ],
-
   "parserOptions": {
     "sourceType": "module",
     "ecmaVersion": "latest"

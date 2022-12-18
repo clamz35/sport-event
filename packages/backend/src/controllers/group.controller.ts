@@ -9,9 +9,7 @@ export class GroupController {
 
   @Get()
   async findall(): Promise<GroupDTO[]> {
-    const groups = await this.em
-      .getRepository(GroupEntity)
-      .find({}, { populate: ['events.id'] });
+    const groups = await this.em.getRepository(GroupEntity).find({}, { populate: ['events.id'] });
 
     return groups.map((group): GroupDTO => {
       return {
@@ -23,9 +21,7 @@ export class GroupController {
   }
 
   @Post()
-  async create(
-    @Body() { id, name, creatorEmail }: GroupDTO,
-  ): Promise<GroupDTO> {
+  async create(@Body() { id, name, creatorEmail }: GroupDTO): Promise<GroupDTO> {
     const newGroup = new GroupEntity({ id, name, creatorEmail });
     const repo = this.em.getRepository(GroupEntity);
     const recipe = repo.create(newGroup);

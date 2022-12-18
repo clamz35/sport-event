@@ -8,9 +8,7 @@ export class EventController {
 
   @Get()
   async findall(): Promise<EventEntity[]> {
-    const events = await this.em
-      .getRepository(EventEntity)
-      .find({}, { populate: ['group'] });
+    const events = await this.em.getRepository(EventEntity).find({}, { populate: ['group'] });
     return events;
   }
 }
