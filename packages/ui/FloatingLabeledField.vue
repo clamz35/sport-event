@@ -1,6 +1,6 @@
 <template>
   <div class="floating-labeled-field">
-    <label class="floating-labeled-field__label">{{ label }}</label>
+    <label class="floating-labeled-field__label" :for="id">{{ label }}</label>
     <slot></slot>
   </div>
 </template>
@@ -8,6 +8,7 @@
 <script setup lang="ts">
 defineProps<{
   label: string;
+  id: string;
 }>();
 </script>
 

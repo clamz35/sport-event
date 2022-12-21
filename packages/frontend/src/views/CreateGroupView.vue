@@ -3,9 +3,14 @@
     <Card>
       <h1 class="create-group__title h2">Création d'un nouveau groupe</h1>
       <div class="create-group__form">
-        <FloatingLabeledField label="Nom du groupe :">
+        <ErrorContainer v-if="createGroupSubmitError">
+          {{ t('createGroupSubmitError') }}
+        </ErrorContainer>
+        <FloatingLabeledField id="groupName" label="Nom du groupe :">
           <div>
             <Input
+              id="groupName"
+              name="groupName"
               v-model="form.name"
               :error="nameRequiredValidation.isError()"
               @keyup="nameRequiredValidation.initialized()"
@@ -18,8 +23,8 @@
             ></FieldHint>
           </div>
         </FloatingLabeledField>
-        <FloatingLabeledField label="Votre email (Optionnel) :">
-          <Input v-model="form.creatorEmail"></Input>
+        <FloatingLabeledField id="email" label="Votre email (Optionnel) :">
+          <Input v-model="form.creatorEmail" id="email" name="email"></Input>
         </FloatingLabeledField>
       </div>
 
@@ -39,13 +44,18 @@ import Card from 'ui/Card.vue';
 import FieldHint from 'ui/form/FieldHint.vue';
 import FloatingLabeledField from 'ui/FloatingLabeledField.vue';
 import Input from 'ui/Input.vue';
-import { computed, reactive, ref } from 'vue';
+import ErrorContainer from 'ui/ErrorContainer.vue';
+import { computed, reactive, ref, type Ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 
 const router = useRouter();
 const { mutate: createNewGroup } = useCreateGroup();
 
 const initialized = ref(false);
+const createGroupSubmitError: Ref<unknown> = ref(null);
 
 const form = reactive<GroupDTO>({
   name: '',
@@ -68,6 +78,10 @@ const handleSubmit = (): void => {
           id: groupCreated.id,
         },
       });
+    },
+    onError(error): void {
+      console.error(' ERRROORRRR', { error });
+      createGroupSubmitError.value = error;
     },
   });
 };

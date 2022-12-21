@@ -28,6 +28,13 @@ h2,
   height: 100%;
 }
 
+.sp-container {
+  height: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-block: 2rem;
+}
+
 #app {
   display: grid;
   grid-template-rows: min-content 1fr;

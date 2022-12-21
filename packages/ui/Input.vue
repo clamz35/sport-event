@@ -1,14 +1,12 @@
 <template>
-  <div>
-    <input
-      type="text"
-      v-model="value"
-      class="input"
-      :class="{
-        'input--error': error,
-      }"
-    />
-  </div>
+  <input
+    type="text"
+    v-model="value"
+    class="input"
+    :class="{
+      'input--error': error,
+    }"
+  />
 </template>
 
 <script setup lang="ts">
