@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <div class="header__title">Sport Event</div>
+    <RouterLink class="header__title" :to="{ name: 'home' }">Sport Event</RouterLink>
   </div>
 </template>
 
@@ -11,6 +11,7 @@
   padding: 1.5rem 3rem;
 
   &__title {
+    color: hsl(var(--primary-contrast));
     font-size: var(--fs-750);
     font-weight: 500;
     line-height: 1;
