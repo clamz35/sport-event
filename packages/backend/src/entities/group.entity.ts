@@ -6,7 +6,7 @@ import {
   PrimaryKey,
   Property,
 } from '@mikro-orm/core';
-import { GroupRepository } from 'src/repositories/group.repository';
+import { GroupRepository } from '../repositories/group.repository';
 import { EventEntity } from './event.entity';
 
 @Entity({ customRepository: () => GroupRepository })
@@ -24,4 +24,10 @@ export class GroupEntity {
 
   @OneToMany(() => EventEntity, (eventEntity) => eventEntity.group)
   events = new Collection<EventEntity>(this);
+
+  constructor(group: Partial<GroupEntity>) {
+    this.id = group.id;
+    this.name = group.name;
+    this.creatorEmail = group.creatorEmail;
+  }
 }

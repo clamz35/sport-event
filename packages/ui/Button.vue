@@ -6,6 +6,7 @@
       'button--primary': theme === 'primary',
       'button--secondary': theme === 'secondary',
     }"
+    :disabled="disabled"
   >
     <slot></slot>
   </button>
@@ -15,10 +16,12 @@
 withDefaults(
   defineProps<{
     theme?: 'primary' | 'secondary' | 'error' | 'warning';
+    disabled?: boolean;
   }>(),
   {
     theme: 'primary',
-  }
+    disabled: false,
+  },
 );
 </script>
 
@@ -31,11 +34,19 @@ withDefaults(
   border: 3px solid transparent;
   transition: all 250ms ease-in;
 
+  &[disabled] {
+    cursor: default;
+  }
+
   &--primary {
     background-color: hsl(var(--accent));
     color: hsl(var(--primary));
 
-    &:hover {
+    &[disabled] {
+      background-color: hsl(var(--accent) / 0.6);
+      color: hsl(var(--primary) / 0.6);
+    }
+    &:not([disabled]):hover {
       border-color: hsl(var(--accent));
       background-color: inherit;
     }
@@ -45,7 +56,7 @@ withDefaults(
     background-color: hsl(var(--primary));
     color: hsl(var(--primary-contrast));
 
-    &:hover {
+    &:not([disabled]):hover {
       color: hsl(var(--primary));
       border-color: hsl(var(--primary));
       background-color: inherit;

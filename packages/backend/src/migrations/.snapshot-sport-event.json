@@ -1,7 +1,5 @@
 {
-  "namespaces": [
-    "public"
-  ],
+  "namespaces": ["public"],
   "name": "public",
   "tables": [
     {
@@ -39,9 +37,7 @@
       "indexes": [
         {
           "keyName": "group_entity_pkey",
-          "columnNames": [
-            "id"
-          ],
+          "columnNames": ["id"],
           "composite": false,
           "primary": true,
           "unique": true
@@ -85,9 +81,7 @@
       "indexes": [
         {
           "keyName": "event_entity_pkey",
-          "columnNames": [
-            "id"
-          ],
+          "columnNames": ["id"],
           "composite": false,
           "primary": true,
           "unique": true
@@ -97,13 +91,9 @@
       "foreignKeys": {
         "event_entity_group_id_foreign": {
           "constraintName": "event_entity_group_id_foreign",
-          "columnNames": [
-            "group_id"
-          ],
+          "columnNames": ["group_id"],
           "localTableName": "public.event_entity",
-          "referencedColumnNames": [
-            "id"
-          ],
+          "referencedColumnNames": ["id"],
           "referencedTableName": "public.group_entity",
           "updateRule": "cascade"
         }

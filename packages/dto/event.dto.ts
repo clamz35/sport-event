@@ -1,9 +1,15 @@
-import { GroupDTO } from './group.dto';
+import { z } from 'zod';
+import type { GroupDTO } from './group.dto';
 
-export class EventDTO {
-  id!: number;
+export interface EventDTO {
+  id?: number;
 
   name: string;
 
-  group!: GroupDTO;
+  group: GroupDTO;
 }
+
+export const eventDTOSchema = z.object({
+  id: z.number().optional(),
+  name: z.string(),
+});
