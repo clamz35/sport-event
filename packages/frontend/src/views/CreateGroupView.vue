@@ -71,7 +71,7 @@ const nameRequiredValidation = computed(() => ({
 
 const handleSubmit = (): void => {
   createNewGroup(form, {
-    onSuccess(groupCreated): void {
+    onSuccess(groupCreated: GroupDTO): void {
       router.push({
         name: 'viewGroup',
         params: {
@@ -79,8 +79,7 @@ const handleSubmit = (): void => {
         },
       });
     },
-    onError(error): void {
-      console.error(' ERRROORRRR', { error });
+    onError(error: unknown): void {
       createGroupSubmitError.value = error;
     },
   });

@@ -1,4 +1,5 @@
-import type { EventDTO } from './event.dto';
+import { EventDTO, eventDTOSchema } from './event.dto';
+import { z } from 'zod';
 
 export interface GroupDTO {
   id?: number;
@@ -9,3 +10,10 @@ export interface GroupDTO {
 
   events?: EventDTO[];
 }
+
+export const groupDTOSchema = z.object({
+  id: z.number().optional(),
+  name: z.string(),
+  creatorEmail: z.string().optional(),
+  events: z.array(eventDTOSchema).optional(),
+});

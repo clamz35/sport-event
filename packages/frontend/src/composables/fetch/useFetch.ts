@@ -1,7 +1,10 @@
-export const useFetch = async (
+import { z } from 'zod';
+
+export const useFetch = async <ResponseSchemaType>(
   url: string,
-  fetchOptions?: RequestInit | undefined
-): Promise<Response> => {
+  responseSchema: z.ZodType<ResponseSchemaType>,
+  fetchOptions?: RequestInit | undefined,
+): Promise<ResponseSchemaType> => {
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
   const defaultFecthOptions: RequestInit = {
@@ -9,5 +12,7 @@ export const useFetch = async (
       'Content-Type': 'application/json',
     },
   };
-  return fetch(`${baseUrl}${url}`, { ...defaultFecthOptions, ...fetchOptions });
+  const response = await fetch(`${baseUrl}${url}`, { ...defaultFecthOptions, ...fetchOptions });
+
+  return z.promise(responseSchema).parse(response.json());
 };
