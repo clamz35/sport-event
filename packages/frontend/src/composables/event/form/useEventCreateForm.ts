@@ -9,10 +9,11 @@ type EventCreateFormRef = Ref<EventCreateForm>;
 export const useEventCreateForm = (): {
   form: EventCreateFormRef;
   handleSubmit: () => void;
+  createEventSubmitError: Ref<unknown>;
 } => {
   const { mutate: createNewEvent } = useEventCreate();
   const router = useRouter();
-
+  const createEventSubmitError: Ref<unknown> = ref(null);
   const form: EventCreateFormRef = ref({
     name: '',
     dateBegin: null,
@@ -22,19 +23,19 @@ export const useEventCreateForm = (): {
 
   const handleSubmit = (): void => {
     createNewEvent(form.value, {
-      onSuccess(groupCreated: EventDTO): void {
+      onSuccess(eventCreated: EventDTO): void {
         router.push({
-          name: 'viewGroup',
+          name: 'eventView',
           params: {
-            id: groupCreated.id,
+            id: eventCreated.id,
           },
         });
       },
-      onError(_error: unknown): void {
-        // createGroupSubmitError.value = error;
+      onError(error: unknown): void {
+        createEventSubmitError.value = error;
       },
     });
   };
 
-  return { form, handleSubmit };
+  return { form, handleSubmit, createEventSubmitError };
 };

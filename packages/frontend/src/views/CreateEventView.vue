@@ -1,6 +1,9 @@
 <template>
   <div class="sp-container-full-centered">
     <FormCard title="createNewEventFormTitle" @submit="handleSubmit()">
+      <ErrorContainer v-if="createEventSubmitError">
+        {{ t('createEventSubmitError') }}
+      </ErrorContainer>
       <EventCreateForm v-model="form"> </EventCreateForm>
       <template v-slot:actions>
         <Button theme="secondary">Annuler</Button>
@@ -17,8 +20,9 @@ import { useEventCreateForm } from '@/composables/event/form/useEventCreateForm'
 import EventCreateForm from '@/components/event/EventCreateForm.vue';
 import FormCard from '@/components/FormCard.vue';
 import Button from 'ui/Button.vue';
+import ErrorContainer from 'ui/ErrorContainer.vue';
 
 const { t } = useI18n();
 
-const { form, handleSubmit } = useEventCreateForm();
+const { form, handleSubmit, createEventSubmitError } = useEventCreateForm();
 </script>

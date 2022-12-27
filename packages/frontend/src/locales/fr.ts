@@ -10,4 +10,5 @@ export default {
   eventDateBeginPlaceholder: "Date de début de l'évènement",
   eventDateEndPlaceholder: "Date de fin de l'évènement",
   eventDescriptionTextareaLabel: 'Description',
+  createEventSubmitError: "Une erreur est survenue lors de la création de l'évènement",
 };
