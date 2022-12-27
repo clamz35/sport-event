@@ -22,8 +22,8 @@ export class GroupEntity {
   @Property()
   creatorEmail?: string;
 
-  @OneToMany(() => EventEntity, (eventEntity) => eventEntity.group)
-  events = new Collection<EventEntity>(this);
+  // @OneToMany(() => EventEntity, (eventEntity) => eventEntity.group)
+  // events = new Collection<EventEntity>(this);
 
   constructor(group: Partial<GroupEntity>) {
     this.id = group.id;

@@ -1,24 +1,26 @@
 import { EventDTO } from 'dto/event.dto';
 import { EventEntity } from 'src/entities/event.entity';
-import { groupMapper } from './group.mapper';
 import { Mapper } from './mapper.interface';
 
 export class EventMapper implements Mapper<EventEntity, EventDTO> {
-  toDto({ group, id, name }, populate = true): EventDTO {
-    const event = {
-      group,
+  toDto({ id, name, dateBegin, dateEnd }: EventEntity, populate = true): EventDTO {
+    const event: EventDTO = {
       id,
       name,
+      dateBegin,
+      dateEnd,
     };
 
     if (populate) {
-      const groupPopulate = false;
-      event.group = groupMapper.toDto(group, groupPopulate);
+      // if (group) {
+      //   const groupPopulate = false;
+      //   event.group = groupMapper.toDto(group, groupPopulate);
+      // }
     }
-    return;
+    return event;
   }
-  toEntity({ id, name }: EventDTO): EventEntity {
-    return { id, name, group: null };
+  toEntity({ id, name, dateBegin, dateEnd }: EventDTO): EventEntity {
+    return { id, name, dateBegin, dateEnd };
   }
 }
 

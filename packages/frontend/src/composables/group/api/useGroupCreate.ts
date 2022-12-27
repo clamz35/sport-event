@@ -2,9 +2,9 @@ import { useMutation, useQueryClient, type UseMutationReturnType } from '@tansta
 
 import type { z } from 'zod';
 import { type GroupDTO, groupDTOSchema } from 'dto/group.dto';
-import { usePost } from '../fetch/usePost';
+import { usePost } from '@/composables/fetch/usePost';
 
-export const useCreateGroup = (): UseMutationReturnType<GroupDTO, unknown, GroupDTO, unknown> => {
+export const useGroupCreate = (): UseMutationReturnType<GroupDTO, unknown, GroupDTO, unknown> => {
   const queryClient = useQueryClient();
 
   return useMutation(
@@ -13,7 +13,7 @@ export const useCreateGroup = (): UseMutationReturnType<GroupDTO, unknown, Group
         '/api/groups',
         JSON.stringify(group),
         groupDTOSchema,
-      );
+      ) as Promise<GroupDTO>;
     },
     {
       onSuccess() {

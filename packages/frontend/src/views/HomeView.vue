@@ -6,7 +6,9 @@
         <RouterLink :to="{ name: 'createGroup' }">
           <Button>{{ t('createNewGroupBtnLabel') }}</Button>
         </RouterLink>
-        <Button theme="secondary">Créer un évènement</Button>
+        <RouterLink :to="{ name: 'createEvent' }">
+          <Button theme="secondary">{{ t('createNewEventBtnLabel') }}</Button>
+        </RouterLink>
       </div>
     </div>
   </div>

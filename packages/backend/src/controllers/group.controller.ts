@@ -10,18 +10,14 @@ export class GroupController {
 
   @Get()
   async findall(): Promise<GroupDTO[]> {
-    const groupsEntities = await this.em
-      .getRepository(GroupEntity)
-      .find({}, { populate: ['events.id'] });
+    const groupsEntities = await this.em.getRepository(GroupEntity).find({}, { populate: [] });
 
     return groupsEntities.map((groupEntity): GroupDTO => groupMapper.toDto(groupEntity));
   }
 
   @Get('/:id')
   async find(@Param() groupId): Promise<GroupDTO> {
-    const groupEntity = await this.em
-      .getRepository(GroupEntity)
-      .findOne(groupId, { populate: ['events.id'] });
+    const groupEntity = await this.em.getRepository(GroupEntity).findOne(groupId, { populate: [] });
 
     return groupMapper.toDto(groupEntity);
   }
