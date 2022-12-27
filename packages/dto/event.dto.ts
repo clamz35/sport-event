@@ -1,5 +1,4 @@
 import { z } from 'zod';
-import type { GroupDTO } from './group.dto';
 
 export interface EventDTO {
   id?: number;

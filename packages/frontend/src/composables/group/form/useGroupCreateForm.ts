@@ -22,7 +22,7 @@ export const useGroupCreateForm = (): {
     createNewGroup(form.value, {
       onSuccess(groupCreated: GroupDTO): void {
         router.push({
-          name: 'viewGroup',
+          name: 'groupView',
           params: {
             id: groupCreated.id,
           },

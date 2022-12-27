@@ -24,8 +24,28 @@
           "nullable": false,
           "mappedType": "string"
         },
-        "creator_email": {
-          "name": "creator_email",
+        "date_begin": {
+          "name": "date_begin",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "date_end": {
+          "name": "date_end",
+          "type": "timestamptz(0)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": false,
+          "length": 6,
+          "mappedType": "datetime"
+        },
+        "description": {
+          "name": "description",
           "type": "varchar(255)",
           "unsigned": false,
           "autoincrement": false,
@@ -34,11 +54,11 @@
           "mappedType": "string"
         }
       },
-      "name": "group_entity",
+      "name": "event_entity",
       "schema": "public",
       "indexes": [
         {
-          "keyName": "group_entity_pkey",
+          "keyName": "event_entity_pkey",
           "columnNames": [
             "id"
           ],
@@ -70,41 +90,21 @@
           "nullable": false,
           "mappedType": "string"
         },
-        "date_begin": {
-          "name": "date_begin",
-          "type": "timestamptz(0)",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": false,
-          "length": 6,
-          "mappedType": "datetime"
-        },
-        "date_end": {
-          "name": "date_end",
-          "type": "timestamptz(0)",
-          "unsigned": false,
-          "autoincrement": false,
-          "primary": false,
-          "nullable": false,
-          "length": 6,
-          "mappedType": "datetime"
-        },
-        "group_id": {
-          "name": "group_id",
-          "type": "int",
+        "creator_email": {
+          "name": "creator_email",
+          "type": "varchar(255)",
           "unsigned": false,
           "autoincrement": false,
           "primary": false,
           "nullable": true,
-          "mappedType": "integer"
+          "mappedType": "string"
         }
       },
-      "name": "event_entity",
+      "name": "group_entity",
       "schema": "public",
       "indexes": [
         {
-          "keyName": "event_entity_pkey",
+          "keyName": "group_entity_pkey",
           "columnNames": [
             "id"
           ],
@@ -114,21 +114,7 @@
         }
       ],
       "checks": [],
-      "foreignKeys": {
-        "event_entity_group_id_foreign": {
-          "constraintName": "event_entity_group_id_foreign",
-          "columnNames": [
-            "group_id"
-          ],
-          "localTableName": "public.event_entity",
-          "referencedColumnNames": [
-            "id"
-          ],
-          "referencedTableName": "public.group_entity",
-          "deleteRule": "set null",
-          "updateRule": "cascade"
-        }
-      }
+      "foreignKeys": {}
     }
   ]
 }

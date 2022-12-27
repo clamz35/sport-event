@@ -1,5 +1,5 @@
 import { EntityManager } from '@mikro-orm/postgresql';
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { EventDTO } from 'dto/event.dto';
 import { EventEntity } from 'src/entities/event.entity';
 import { eventMapper } from 'src/mapper/event.mapper';
@@ -15,9 +15,16 @@ export class EventController {
     return events.map((eventEntity) => eventMapper.toDto(eventEntity));
   }
 
+  @Get('/:id')
+  async find(@Param() id: number): Promise<EventDTO> {
+    const eventEntity = await this.em.getRepository(EventEntity).findOne(id, { populate: [] });
+
+    return eventMapper.toDto(eventEntity);
+  }
+
   @Post()
-  async create(@Body() { name, dateBegin, dateEnd }: EventDTO): Promise<EventDTO> {
-    const newEvent = new EventEntity({ name, dateBegin, dateEnd });
+  async create(@Body() { name, dateBegin, dateEnd, description }: EventDTO): Promise<EventDTO> {
+    const newEvent = new EventEntity({ name, dateBegin, dateEnd, description });
     const repo = this.em.getRepository(EventEntity);
     const newEventEntity = repo.create(newEvent);
 
