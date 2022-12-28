@@ -1,12 +1,14 @@
 <template>
   <div class="sp-container-full-centered">
-    <div class="flex flex-col gap-36 items-center">
+    <div class="home-view">
       <h1>Créez vos évènements sportifs</h1>
-      <div class="flex gap-4">
-        <RouterLink :to="{ name: 'createGroup' }">
+      <div class="home-view__actions">
+        <RouterLink :to="{ name: 'groupCreate' }">
           <Button>{{ t('createNewGroupBtnLabel') }}</Button>
         </RouterLink>
-        <Button theme="secondary">Créer un évènement</Button>
+        <RouterLink :to="{ name: 'eventCreate' }">
+          <Button theme="secondary">{{ t('createNewEventBtnLabel') }}</Button>
+        </RouterLink>
       </div>
     </div>
   </div>
@@ -17,3 +19,16 @@ import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
 </script>
+
+<style scoped lang="scss">
+.home-view {
+  display: flex;
+  flex-direction: column;
+  gap: 9rem;
+  align-items: center;
+  &__actions {
+    display: flex;
+    gap: 16px;
+  }
+}
+</style>

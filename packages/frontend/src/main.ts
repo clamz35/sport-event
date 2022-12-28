@@ -1,12 +1,11 @@
 import { createApp } from 'vue';
-import App from './App.vue';
-import router from './router';
 import { createI18n } from 'vue-i18n';
 
+import App from './App.vue';
+import router from './router';
 import fr from './locales/fr';
 import en from './locales/en';
 
-import './assets/styles/tailwind.scss';
 import './assets/styles/styles.scss';
 import { VueQueryPlugin } from '@tanstack/vue-query';
 

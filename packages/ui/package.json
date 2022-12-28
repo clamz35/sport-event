@@ -1,6 +1,6 @@
 {
   "name": "ui",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "vue": "3.2.45"
+    "@vuepic/vue-datepicker": "3.6.3",
+    "vue": "3.2.45",
+    "vue-i18n": "9.2.2"
   }
 }
