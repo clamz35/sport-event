@@ -1,8 +1,9 @@
 <template>
   <Datepicker
     v-model="value"
-    :placeholder="placeholder"
     format="dd/MM/yyyy HH:mm"
+    :placeholder="placeholder"
+    :flow="flow"
     :class="{
       'datepicker--error': error,
     }"
@@ -12,7 +13,7 @@
 <script setup lang="ts">
 import Datepicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
-import { computed } from 'vue';
+import { computed, Ref, ref } from 'vue';
 
 const props = withDefaults(
   defineProps<{
@@ -25,6 +26,9 @@ const props = withDefaults(
     error: false,
   },
 );
+const flow: Ref<('calendar' | 'time')[]> = ref(['calendar', 'time']) as Ref<
+  ('calendar' | 'time')[]
+>;
 
 const emit = defineEmits<{
   (e: 'update:modelValue', value: Date): void;

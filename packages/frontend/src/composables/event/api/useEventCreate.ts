@@ -4,7 +4,7 @@ import { useMutation, useQueryClient, type UseMutationReturnType } from '@tansta
 import { eventDTOSchema, type EventDTO } from 'dto/event.dto';
 import type { EventModel } from '@/models/event/Event';
 
-export const useEventCreate = (): UseMutationReturnType<EventDTO, unknown, EventDTO, unknown> => {
+export const useEventCreate = (): UseMutationReturnType<EventModel, unknown, EventDTO, unknown> => {
   const queryClient = useQueryClient();
 
   return useMutation(
@@ -13,15 +13,25 @@ export const useEventCreate = (): UseMutationReturnType<EventDTO, unknown, Event
         '/api/events',
         JSON.stringify(event),
         eventDTOSchema,
-      ).then(({ id, name, dateBegin, dateEnd, description }): EventModel => {
-        return {
+      ).then(
+        ({
           id,
           name,
-          dateBegin: new Date(dateBegin),
-          dateEnd: new Date(dateEnd),
+          dateBegin,
+          dateEnd,
           description,
-        };
-      });
+          address,
+        }: z.infer<typeof eventDTOSchema>): EventModel => {
+          return {
+            id,
+            name,
+            dateBegin: new Date(dateBegin),
+            dateEnd: new Date(dateEnd),
+            description,
+            address,
+          };
+        },
+      );
     },
     {
       onSuccess() {

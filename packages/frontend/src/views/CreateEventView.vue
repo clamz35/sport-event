@@ -1,13 +1,13 @@
 <template>
   <div class="sp-container-full-centered">
-    <FormCard title="createNewEventFormTitle" @submit="handleSubmit()">
+    <FormCard title="createNewEventFormTitle" @submit="onSubmit">
       <ErrorContainer v-if="createEventSubmitError">
         {{ t('createEventSubmitError') }}
       </ErrorContainer>
       <EventCreateForm v-model="form"> </EventCreateForm>
       <template v-slot:actions>
         <Button theme="secondary">Annuler</Button>
-        <Button :disabled="!form.name" type="submit">{{ t('createNewEventSubmitBtn') }}</Button>
+        <Button :disabled="!isValid" type="submit">{{ t('createNewEventSubmitBtn') }}</Button>
       </template>
     </FormCard>
   </div>
@@ -24,5 +24,5 @@ import ErrorContainer from 'ui/ErrorContainer.vue';
 
 const { t } = useI18n();
 
-const { form, handleSubmit, createEventSubmitError } = useEventCreateForm();
+const { form, onSubmit, createEventSubmitError, isValid } = useEventCreateForm();
 </script>

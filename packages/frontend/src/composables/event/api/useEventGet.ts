@@ -14,11 +14,9 @@ export const useEventGet = (eventId: number): UseQueryReturnType<EventModel, unk
       );
 
       return {
-        id: eventDTO.id,
-        name: eventDTO.name,
+        ...eventDTO,
         dateBegin: new Date(eventDTO.dateBegin),
         dateEnd: new Date(eventDTO.dateEnd),
-        description: eventDTO.description,
       } as EventModel;
     },
   });

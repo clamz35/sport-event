@@ -1,7 +1,7 @@
 <template>
   <Card>
     <h1 class="form-card__title h2">{{ t(title) }}</h1>
-    <form @submit.prevent="$emit('submit')">
+    <form @submit.prevent="$emit('submit', $event)">
       <div class="form-card__form">
         <slot></slot>
       </div>
@@ -21,7 +21,7 @@ defineProps<{
 }>();
 
 defineEmits<{
-  (e: 'submit'): void;
+  (e: 'submit', event: Event): void;
 }>();
 
 const { t } = useI18n();

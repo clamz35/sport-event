@@ -20,6 +20,9 @@ export class EventEntity {
   @Property()
   description?: string;
 
+  @Property()
+  address?: string;
+
   // @ManyToOne(() => GroupEntity)
   // group?: GroupEntity;
 
@@ -29,5 +32,6 @@ export class EventEntity {
     this.dateBegin = event.dateBegin;
     this.dateEnd = event.dateEnd;
     this.description = event.description;
+    this.address = event.address;
   }
 }

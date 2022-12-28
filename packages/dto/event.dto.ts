@@ -4,10 +4,10 @@ export interface EventDTO {
   id?: number;
 
   name: string;
-  dateBegin: Date | null;
-  dateEnd: Date | null;
+  dateBegin: string;
+  dateEnd: string;
   description?: string;
-
+  address?: string;
   // group?: GroupDTO;
 }
 
@@ -16,5 +16,6 @@ export const eventDTOSchema = z.object({
   name: z.string(),
   dateBegin: z.string().datetime(),
   dateEnd: z.string().datetime(),
-  description: z.string().optional(),
+  description: z.string().optional().nullable(),
+  address: z.string().optional().nullable(),
 });

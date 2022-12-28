@@ -24,7 +24,9 @@ export class EventController {
 
   @Post()
   async create(@Body() { name, dateBegin, dateEnd, description }: EventDTO): Promise<EventDTO> {
-    const newEvent = new EventEntity({ name, dateBegin, dateEnd, description });
+    const newEvent = new EventEntity(
+      eventMapper.toEntity({ name, dateBegin, dateEnd, description }),
+    );
     const repo = this.em.getRepository(EventEntity);
     const newEventEntity = repo.create(newEvent);
 

@@ -3,13 +3,17 @@ import { EventEntity } from 'src/entities/event.entity';
 import { Mapper } from './mapper.interface';
 
 export class EventMapper implements Mapper<EventEntity, EventDTO> {
-  toDto({ id, name, dateBegin, dateEnd, description }: EventEntity, populate = true): EventDTO {
+  toDto(
+    { id, name, dateBegin, dateEnd, description, address }: EventEntity,
+    populate = true,
+  ): EventDTO {
     const event: EventDTO = {
       id,
       name,
-      dateBegin,
-      dateEnd,
+      dateBegin: dateBegin.toISOString(),
+      dateEnd: dateEnd.toISOString(),
       description,
+      address,
     };
 
     if (populate) {
@@ -20,8 +24,8 @@ export class EventMapper implements Mapper<EventEntity, EventDTO> {
     }
     return event;
   }
-  toEntity({ id, name, dateBegin, dateEnd }: EventDTO): EventEntity {
-    return { id, name, dateBegin, dateEnd };
+  toEntity({ id, name, dateBegin, dateEnd, address }: EventDTO): EventEntity {
+    return { id, name, dateBegin: new Date(dateBegin), dateEnd: new Date(dateEnd), address };
   }
 }
 

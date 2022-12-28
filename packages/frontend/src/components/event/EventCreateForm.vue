@@ -1,6 +1,7 @@
 <template>
   <FloatLabel id="eventName" label="eventNameInputLabel">
     <Input id="eventName" name="eventName" v-model="form.name"></Input>
+    <span v-if="form.nameError">{{ t(form.nameError) }}</span>
   </FloatLabel>
   <FloatLabel id="eventDate" label="eventDateInputLabel">
     <SeDatePicker

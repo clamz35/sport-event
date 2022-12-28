@@ -3,5 +3,6 @@ export interface EventModel {
   name: string;
   dateBegin: Date;
   dateEnd: Date;
-  description?: string;
+  description?: string | null;
+  address?: string | null;
 }
