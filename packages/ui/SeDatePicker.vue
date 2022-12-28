@@ -13,7 +13,7 @@
 <script setup lang="ts">
 import Datepicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
-import { computed, Ref, ref } from 'vue';
+import { computed, type Ref, ref } from 'vue';
 
 const props = withDefaults(
   defineProps<{
@@ -31,7 +31,7 @@ const flow: Ref<('calendar' | 'time')[]> = ref(['calendar', 'time']) as Ref<
 >;
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: Date): void;
+  (e: 'update:modelValue', value: Date | null): void;
 }>();
 
 const value = computed({

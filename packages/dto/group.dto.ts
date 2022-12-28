@@ -1,4 +1,4 @@
-import { EventDTO, eventDTOSchema } from './event.dto';
+import { type EventDTO, eventDTOSchema } from './event.dto';
 import { z } from 'zod';
 
 export interface GroupDTO {
