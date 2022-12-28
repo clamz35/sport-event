@@ -53,8 +53,7 @@ export const useEventCreateForm = (): {
   });
 
   const onSubmit = (): void => {
-    if (!form.value.dateBegin || !form.value.dateEnd || errors.value) {
-      console.log({ errors: errors.value });
+    if (!form.value.dateBegin || !form.value.dateEnd || !isValid.value) {
       if (errors.value) {
         throw errors.value;
       }
