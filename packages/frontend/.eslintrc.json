@@ -17,7 +17,7 @@
       "extends": ["plugin:cypress/recommended"]
     },
     {
-      "files": ["**/*.ts", "*.mts", "*.cts", "*.tsx"],
+      "files": ["*.ts", "*.mts", "*.cts", "*.tsx", "*.vue"],
       "rules": {
         "@typescript-eslint/explicit-function-return-type": "error"
       }

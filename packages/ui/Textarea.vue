@@ -1,12 +1,11 @@
 <template>
-  <input
-    :type="type"
+  <textarea
     v-model="value"
-    class="input"
+    class="textarea"
     :class="{
-      'input--error': error,
+      'textarea--error': error,
     }"
-  />
+  ></textarea>
 </template>
 
 <script setup lang="ts">
@@ -14,13 +13,11 @@ import { computed } from 'vue';
 
 const props = withDefaults(
   defineProps<{
-    modelValue?: string | Date | number | null;
-    type?: 'text' | 'date' | 'number' | 'datetime-local';
+    modelValue?: string;
     error?: boolean;
   }>(),
   {
     modelValue: '',
-    type: 'text',
     error: false,
   },
 );
@@ -38,11 +35,13 @@ const value = computed({
 </script>
 
 <style scoped lang="scss">
-.input {
+.textarea {
   border-radius: var(--rounded-300);
   border: 1px solid hsl(var(--neutral-300));
   padding: 0.5rem 8px;
   width: 100%;
+  min-height: 200px;
+  resize: none;
 
   &--error {
     border-color: hsl(var(--error), 0.4);

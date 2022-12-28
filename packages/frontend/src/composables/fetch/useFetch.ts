@@ -14,5 +14,9 @@ export const useFetch = async <ResponseSchemaType>(
   };
   const response = await fetch(`${baseUrl}${url}`, { ...defaultFecthOptions, ...fetchOptions });
 
+  if (!response.ok) {
+    throw await response.json();
+  }
+
   return z.promise(responseSchema).parse(response.json());
 };

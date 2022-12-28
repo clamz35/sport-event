@@ -3,10 +3,12 @@
     <div class="home-view">
       <h1>Créez vos évènements sportifs</h1>
       <div class="home-view__actions">
-        <RouterLink :to="{ name: 'createGroup' }">
+        <RouterLink :to="{ name: 'groupCreate' }">
           <Button>{{ t('createNewGroupBtnLabel') }}</Button>
         </RouterLink>
-        <Button theme="secondary">Créer un évènement</Button>
+        <RouterLink :to="{ name: 'eventCreate' }">
+          <Button theme="secondary">{{ t('createNewEventBtnLabel') }}</Button>
+        </RouterLink>
       </div>
     </div>
   </div>

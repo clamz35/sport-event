@@ -1,6 +1,5 @@
-import { Entity, EntityRepositoryType, ManyToOne, PrimaryKey, Property } from '@mikro-orm/core';
+import { Entity, EntityRepositoryType, PrimaryKey, Property } from '@mikro-orm/core';
 import { EventRepository } from '../repositories/event.repository';
-import { GroupEntity } from './group.entity';
 
 @Entity({ customRepository: () => EventRepository })
 export class EventEntity {
@@ -12,6 +11,27 @@ export class EventEntity {
   @Property()
   name: string;
 
-  @ManyToOne(() => GroupEntity)
-  group!: GroupEntity;
+  @Property()
+  dateBegin: Date;
+
+  @Property()
+  dateEnd: Date;
+
+  @Property()
+  description?: string;
+
+  @Property()
+  address?: string;
+
+  // @ManyToOne(() => GroupEntity)
+  // group?: GroupEntity;
+
+  constructor(event: Partial<EventEntity>) {
+    this.id = event.id;
+    this.name = event.name;
+    this.dateBegin = event.dateBegin;
+    this.dateEnd = event.dateEnd;
+    this.description = event.description;
+    this.address = event.address;
+  }
 }

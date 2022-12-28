@@ -39,3 +39,4 @@ dockerConfig/postgres-dev-init.sql
 .env
 temp
 pgdata
+backend.code-workspace

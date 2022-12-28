@@ -1,108 +1,36 @@
 <template>
   <div class="sp-container-full-centered">
-    <Card>
-      <h1 class="create-group__title h2">Création d'un nouveau groupe</h1>
-      <div class="create-group__form">
-        <ErrorContainer v-if="createGroupSubmitError">
-          {{ t('createGroupSubmitError') }}
-        </ErrorContainer>
-        <FloatingLabeledField id="groupName" label="Nom du groupe :">
-          <div>
-            <Input
-              id="groupName"
-              name="groupName"
-              v-model="form.name"
-              :error="nameRequiredValidation.isError()"
-              @keyup="nameRequiredValidation.initialized()"
-            ></Input>
+    <FormCard title="createNewGroupFormTitle" @submit="handleSubmit()">
+      <ErrorContainer v-if="createGroupSubmitError">
+        {{ t('createGroupSubmitError') }}
+      </ErrorContainer>
 
-            <FieldHint
-              :message="nameRequiredValidation.message"
-              :isError="nameRequiredValidation.isError()"
-              :isValid="nameRequiredValidation.isValid()"
-            ></FieldHint>
-          </div>
-        </FloatingLabeledField>
-        <FloatingLabeledField id="email" label="Votre email (Optionnel) :">
-          <Input v-model="form.creatorEmail" id="email" name="email"></Input>
-        </FloatingLabeledField>
-      </div>
+      <GroupNameField v-model="form.name"></GroupNameField>
+      <FloatLabel id="email" label="Votre email (Optionnel) :">
+        <Input v-model="form.creatorEmail" id="email" name="email"></Input>
+      </FloatLabel>
 
-      <div class="create-group__actions">
+      <template v-slot:actions>
         <Button theme="secondary">Annuler</Button>
-        <Button :disabled="!form.name" @click="handleSubmit()">Créer le nouveau groupe</Button>
-      </div>
-    </Card>
+        <Button :disabled="!form.name" type="submit">Créer le nouveau groupe</Button>
+      </template>
+    </FormCard>
   </div>
 </template>
 
 <script setup lang="ts">
-import { useCreateGroup } from '@/composables/group/useCreateGroup';
-import type { GroupDTO } from 'dto/group.dto';
+import FormCard from '@/components/FormCard.vue';
+import GroupNameField from '@/components/group/GroupNameField.vue';
+import { useGroupCreateForm } from '@/composables/group/form/useGroupCreateForm';
 import Button from 'ui/Button.vue';
-import Card from 'ui/Card.vue';
-import FieldHint from 'ui/form/FieldHint.vue';
-import FloatingLabeledField from 'ui/FloatingLabeledField.vue';
-import Input from 'ui/Input.vue';
 import ErrorContainer from 'ui/ErrorContainer.vue';
-import { computed, reactive, ref, type Ref } from 'vue';
-import { useRouter } from 'vue-router';
+import FloatLabel from 'ui/FloatLabel.vue';
+import Input from 'ui/Input.vue';
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
 
-const router = useRouter();
-const { mutate: createNewGroup } = useCreateGroup();
-
-const initialized = ref(false);
-const createGroupSubmitError: Ref<unknown> = ref(null);
-
-const form = reactive<GroupDTO>({
-  name: '',
-  creatorEmail: '',
-});
-
-const nameRequiredValidation = computed(() => ({
-  initialized: () => (initialized.value = true),
-  isError: (): boolean => initialized.value && form.name === '',
-  isValid: (): boolean => initialized.value && form.name !== '',
-  message: 'Veuillez saisir un nom de groupe.',
-}));
-
-const handleSubmit = (): void => {
-  createNewGroup(form, {
-    onSuccess(groupCreated: GroupDTO): void {
-      router.push({
-        name: 'viewGroup',
-        params: {
-          id: groupCreated.id,
-        },
-      });
-    },
-    onError(error: unknown): void {
-      createGroupSubmitError.value = error;
-    },
-  });
-};
+const { form, handleSubmit, createGroupSubmitError } = useGroupCreateForm();
 </script>
 
-<style lang="scss" scoped>
-.create-group {
-  &__title {
-    padding-bottom: 2.625rem;
-  }
-
-  &__form {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  &__actions {
-    display: flex;
-    gap: 0.5rem;
-    justify-content: flex-end;
-    margin-top: 3rem;
-  }
-}
-</style>
+<style lang="scss" scoped></style>
