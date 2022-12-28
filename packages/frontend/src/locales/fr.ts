@@ -11,4 +11,5 @@ export default {
   eventDateEndPlaceholder: "Date de fin de l'évènement",
   eventDescriptionTextareaLabel: 'Description',
   createEventSubmitError: "Une erreur est survenue lors de la création de l'évènement",
+  minCharError: 'Veuillez entrer au moins {min} caractères',
 };
