@@ -1,5 +1,5 @@
 import { EntityManager } from '@mikro-orm/postgresql';
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, HttpException, HttpStatus, Param, Post } from '@nestjs/common';
 import { EventDTO } from 'dto/event.dto';
 import { EventEntity } from 'src/entities/event.entity';
 import { eventMapper } from 'src/mapper/event.mapper';
@@ -18,6 +18,10 @@ export class EventController {
   @Get('/:id')
   async find(@Param() id: number): Promise<EventDTO> {
     const eventEntity = await this.em.getRepository(EventEntity).findOne(id, { populate: [] });
+
+    if (!eventEntity) {
+      throw new HttpException('NotFound', HttpStatus.NOT_FOUND);
+    }
 
     return eventMapper.toDto(eventEntity);
   }

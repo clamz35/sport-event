@@ -1,13 +1,23 @@
 <template>
   <div class="sp-container">
     <EventViewHeader v-if="event" :event="event"></EventViewHeader>
+
+    <div v-else-if="isLoading">Chargement...</div>
+    <div v-else-if="isError">
+      <HttpErrorContainer
+        v-if="error"
+        notFoundI18nKey="eventErrorNotFound"
+        :error="error"
+      ></HttpErrorContainer>
+    </div>
   </div>
 </template>
 <script setup lang="ts">
 import EventViewHeader from '@/components/event/EventViewHeader.vue';
+import HttpErrorContainer from '@/components/HttpErrorContainer.vue';
 import { useEventGet } from '@/composables/event/api/useEventGet';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
-const { data: event } = useEventGet(Number(route.params.id));
+const { data: event, isError, error, isLoading } = useEventGet(Number(route.params.id));
 </script>

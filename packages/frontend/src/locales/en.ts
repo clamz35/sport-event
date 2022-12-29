@@ -12,4 +12,7 @@ export default {
   eventDescriptionTextareaLabel: 'Description',
   createEventSubmitError: 'Error occured during creation of the event',
   minCharError: 'Please enter at least {min} character(s)',
+  eventErrorNotFound: 'Event is not found.',
+  notFoundError: 'Error: not found.',
+  serverError: 'An error is occured.',
 };

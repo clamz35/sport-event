@@ -4,7 +4,9 @@ import { useQuery, type UseQueryReturnType } from '@tanstack/vue-query';
 import { eventDTOSchema } from 'dto/event.dto';
 import type { z } from 'zod';
 
-export const useEventGet = (eventId: number): UseQueryReturnType<EventModel, unknown> => {
+export const useEventGet = (
+  eventId: number,
+): UseQueryReturnType<EventModel, { statusCode: number; message: string }> => {
   return useQuery({
     queryKey: ['events', eventId],
     queryFn: async () => {
