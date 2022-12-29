@@ -1,5 +1,5 @@
 <template>
-  <div class="sp-container-full-centered">
+  <div class="sp-container-full sp-container-full--centered">
     <FormCard title="createNewEventFormTitle" @submit="onSubmit">
       <ErrorContainer v-if="createEventSubmitError">
         {{ t('createEventSubmitError') }}

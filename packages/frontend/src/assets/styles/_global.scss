@@ -8,7 +8,7 @@ body {
 h1,
 h2,
 h3 {
-  font-family: var(--ff-2);
+  font-family: var(--ff-1);
 }
 
 h1,
@@ -23,10 +23,12 @@ h2,
   font-weight: 600;
 }
 
-.sp-container-full-centered {
+.sp-container-full {
   display: grid;
-  place-items: center;
   height: 100%;
+  &--centered {
+    place-items: center;
+  }
 }
 
 .sp-container {
@@ -34,6 +36,9 @@ h2,
   max-width: 1440px;
   margin-inline: auto;
   padding-block: 2rem;
+  &--full {
+    display: grid;
+  }
 }
 
 #app {
@@ -41,6 +46,7 @@ h2,
   grid-template-rows: min-content 1fr;
   min-height: 100vh;
   background-color: hsl(var(--neutral-100));
+  // background: hsl(var(--primary) / 0.6);
 }
 
 a {

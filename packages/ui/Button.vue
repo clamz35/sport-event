@@ -48,7 +48,7 @@ withDefaults(
     }
     &:not([disabled]):hover {
       border-color: hsl(var(--accent));
-      background-color: inherit;
+      background-color: hsl(var(--accent) / 0.5);
     }
   }
 
@@ -57,9 +57,9 @@ withDefaults(
     color: hsl(var(--primary-contrast));
 
     &:not([disabled]):hover {
-      color: hsl(var(--primary));
+      color: hsl(var(--primary-contrast));
       border-color: hsl(var(--primary));
-      background-color: inherit;
+      background-color: hsl(var(--primary) / 0.5);
     }
   }
 }

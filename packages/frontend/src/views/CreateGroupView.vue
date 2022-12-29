@@ -1,5 +1,5 @@
 <template>
-  <div class="sp-container-full-centered">
+  <div class="sp-container-full sp-container-full--centered">
     <FormCard title="createNewGroupFormTitle" @submit="handleSubmit()">
       <ErrorContainer v-if="createGroupSubmitError">
         {{ t('createGroupSubmitError') }}
