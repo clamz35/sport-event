@@ -1,23 +1,34 @@
 import { EntityManager } from '@mikro-orm/postgresql';
-import { Body, Controller, Get, HttpException, HttpStatus, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpException,
+  HttpStatus,
+  Param,
+  Patch,
+  Post,
+} from '@nestjs/common';
 import { EventDTO } from 'dto/event.dto';
+import { PlayerDTO } from 'dto/player.dto';
 import { EventEntity } from 'src/entities/event.entity';
 import { eventMapper } from 'src/mapper/event.mapper';
+import { EventService } from 'src/services/event/event.service';
 
 @Controller('api/events')
 export class EventController {
-  constructor(private readonly em: EntityManager) {}
+  constructor(private readonly em: EntityManager, private readonly eventService: EventService) {}
 
   @Get()
   async findall(): Promise<EventDTO[]> {
-    const events = await this.em.getRepository(EventEntity).find({}, { populate: [] });
+    const events = await this.eventService.getAllEvents();
 
     return events.map((eventEntity) => eventMapper.toDto(eventEntity));
   }
 
   @Get('/:id')
   async find(@Param() id: number): Promise<EventDTO> {
-    const eventEntity = await this.em.getRepository(EventEntity).findOne(id, { populate: [] });
+    const eventEntity = await this.eventService.getEventById(id, ['players']);
 
     if (!eventEntity) {
       throw new HttpException('NotFound', HttpStatus.NOT_FOUND);
@@ -34,5 +45,10 @@ export class EventController {
 
     await this.em.flush();
     return eventMapper.toDto(newEventEntity);
+  }
+
+  @Patch('/:id/players')
+  async addPlayer(@Param() eventId, @Body() player: PlayerDTO): Promise<void> {
+    return this.eventService.addPlayer(eventId, player);
   }
 }

@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { PlayerDTO, playerDTOSchema } from './player.dto';
 
 export interface EventDTO {
   id?: number;
@@ -8,6 +9,7 @@ export interface EventDTO {
   dateEnd: string;
   description?: string;
   address?: string;
+  players: PlayerDTO[];
   // group?: GroupDTO;
 }
 
@@ -18,4 +20,5 @@ export const eventDTOSchema = z.object({
   dateEnd: z.string().datetime(),
   description: z.string().optional().nullable(),
   address: z.string().optional().nullable(),
+  players: z.array(playerDTOSchema),
 });

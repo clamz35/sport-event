@@ -1,5 +1,13 @@
-import { Entity, EntityRepositoryType, PrimaryKey, Property } from '@mikro-orm/core';
+import {
+  Collection,
+  Entity,
+  EntityRepositoryType,
+  ManyToMany,
+  PrimaryKey,
+  Property,
+} from '@mikro-orm/core';
 import { EventRepository } from '../repositories/event.repository';
+import { PlayerEntity } from './player.entity';
 
 @Entity({ customRepository: () => EventRepository })
 export class EventEntity {
@@ -22,6 +30,9 @@ export class EventEntity {
 
   @Property()
   address?: string;
+
+  @ManyToMany(() => PlayerEntity)
+  players?: Collection<PlayerEntity> = new Collection<PlayerEntity>(this);
 
   // @ManyToOne(() => GroupEntity)
   // group?: GroupEntity;

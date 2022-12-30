@@ -1,13 +1,5 @@
-import {
-  Collection,
-  Entity,
-  EntityRepositoryType,
-  OneToMany,
-  PrimaryKey,
-  Property,
-} from '@mikro-orm/core';
+import { Entity, EntityRepositoryType, PrimaryKey, Property } from '@mikro-orm/core';
 import { GroupRepository } from '../repositories/group.repository';
-import { EventEntity } from './event.entity';
 
 @Entity({ customRepository: () => GroupRepository })
 export class GroupEntity {
