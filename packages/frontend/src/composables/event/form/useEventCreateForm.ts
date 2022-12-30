@@ -29,6 +29,7 @@ export const useEventCreateForm = (
       dateBegin: new Date(),
       dateEnd: new Date(),
       description: '',
+      address: '',
       ...initialFormValue,
     },
     validationSchema: toFormValidator(
@@ -37,6 +38,7 @@ export const useEventCreateForm = (
         dateBegin: z.date(),
         dateEnd: z.date(),
         description: z.string(),
+        address: z.string(),
       }),
     ),
   });
@@ -47,12 +49,14 @@ export const useEventCreateForm = (
   const { value: dateBegin } = useField<Date>('dateBegin');
   const { value: dateEnd } = useField<Date>('dateEnd');
   const { value: description } = useField<string>('description');
+  const { value: address } = useField<string>('address');
   const form: EventCreateFormRef = ref({
     name,
     nameError,
     dateBegin,
     dateEnd,
     description,
+    address,
   });
 
   const onSubmit = (): void => {

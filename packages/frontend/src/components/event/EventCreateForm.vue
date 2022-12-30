@@ -3,6 +3,9 @@
     <Input id="eventName" name="eventName" v-model="form.name"></Input>
     <span v-if="form.nameError">{{ t(form.nameError) }}</span>
   </FloatLabel>
+  <FloatLabel id="eventAddress" label="eventAddressInputLabel">
+    <Input id="eventAddress" name="eventAddress" v-model="form.address"></Input>
+  </FloatLabel>
   <FloatLabel id="eventDate" label="eventDateInputLabel">
     <SeDatePicker
       v-model="form.dateBegin"

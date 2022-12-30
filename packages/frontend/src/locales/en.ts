@@ -10,6 +10,7 @@ export default {
   createNewEventSubmitBtn: 'Create the new event',
   eventNameInputLabel: 'Name of event',
   eventDateInputLabel: 'Date of event',
+  eventAddressInputLabel: 'Address',
   eventDateBeginPlaceholder: 'Begin date of event',
   eventDateEndPlaceholder: 'End date of event',
   eventDescriptionTextareaLabel: 'Description',

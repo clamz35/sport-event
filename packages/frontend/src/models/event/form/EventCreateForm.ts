@@ -5,4 +5,5 @@ export interface EventCreateForm {
   dateBegin: Date | null;
   dateEnd: Date | null;
   description: string;
+  address: string;
 }

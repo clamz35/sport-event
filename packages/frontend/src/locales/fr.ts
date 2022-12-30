@@ -11,6 +11,7 @@ export default {
   createNewEventSubmitBtn: 'Créer le nouvel évènement',
   eventNameInputLabel: "Nom de l'évènement",
   eventDateInputLabel: "Date de l'évènement",
+  eventAddressInputLabel: 'Adresse',
   eventDateBeginPlaceholder: "Date de début de l'évènement",
   eventDateEndPlaceholder: "Date de fin de l'évènement",
   eventDescriptionTextareaLabel: 'Description',

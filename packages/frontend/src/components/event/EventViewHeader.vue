@@ -2,6 +2,7 @@
   <header>
     <h1>{{ event.name }}</h1>
     <div class="event-view-header__period">{{ eventDateBegin }} - {{ eventDateEnd }}</div>
+    <div v-if="event.address" class="event-view-header__address">{{ event.address }}</div>
     <div class="event-view-header__description">{{ event.description }}</div>
   </header>
 </template>
