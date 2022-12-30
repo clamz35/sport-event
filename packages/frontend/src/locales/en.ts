@@ -15,4 +15,5 @@ export default {
   eventErrorNotFound: 'Event is not found.',
   notFoundError: 'Error: not found.',
   serverError: 'An error is occured.',
+  cancelBtn: 'Cancel',
 };

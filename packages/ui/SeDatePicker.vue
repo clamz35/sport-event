@@ -4,6 +4,9 @@
     format="dd/MM/yyyy HH:mm"
     :placeholder="placeholder"
     :flow="flow"
+    :inline="inline"
+    :enable-time-picker="enableTimePicker"
+    :menu-class-name="menuClassName"
     :class="{
       'datepicker--error': error,
     }"
@@ -19,10 +22,17 @@ const props = withDefaults(
   defineProps<{
     modelValue?: Date | null;
     placeholder?: string;
+    inline?: boolean;
+    enableTimePicker?: boolean;
+    menuClassName?: string;
     error?: boolean;
   }>(),
   {
     modelValue: null,
+    inline: false,
+    enableTimePicker: true,
+    menuClassName: '',
+    placeholder: '',
     error: false,
   },
 );

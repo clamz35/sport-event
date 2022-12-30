@@ -10,7 +10,9 @@ import type { EventModel } from '@/models/event/Event';
 
 type EventCreateFormRef = Ref<EventCreateForm>;
 
-export const useEventCreateForm = (): {
+export const useEventCreateForm = (
+  initialFormValue?: Partial<EventCreateForm>,
+): {
   form: EventCreateFormRef;
   onSubmit: (onSubmit: Event) => void;
   createEventSubmitError: Ref<unknown>;
@@ -27,6 +29,7 @@ export const useEventCreateForm = (): {
       dateBegin: new Date(),
       dateEnd: new Date(),
       description: '',
+      ...initialFormValue,
     },
     validationSchema: toFormValidator(
       z.object({

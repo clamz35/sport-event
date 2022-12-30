@@ -5,6 +5,7 @@
     :class="{
       'button--primary': theme === 'primary',
       'button--secondary': theme === 'secondary',
+      'button--error': theme === 'error',
     }"
     :disabled="disabled"
   >
@@ -15,7 +16,7 @@
 <script setup lang="ts">
 withDefaults(
   defineProps<{
-    theme?: 'primary' | 'secondary' | 'error' | 'warning';
+    theme?: 'primary' | 'secondary' | 'error' | 'warning' | 'neutral';
     disabled?: boolean;
   }>(),
   {
@@ -60,6 +61,17 @@ withDefaults(
       color: hsl(var(--primary-contrast));
       border-color: hsl(var(--primary));
       background-color: hsl(var(--primary) / 0.5);
+    }
+  }
+
+  &--error {
+    background-color: hsl(var(--error));
+    color: hsl(var(--error-contrast));
+
+    &:not([disabled]):hover {
+      color: hsl(var(--error-contrast));
+      border-color: hsl(var(--error));
+      background-color: hsl(var(--error) / 0.5);
     }
   }
 }

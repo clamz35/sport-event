@@ -15,4 +15,5 @@ export default {
   eventErrorNotFound: "L'évènement n'existe pas.",
   notFoundError: "Erreur: L'élément n'existe pas.",
   serverError: 'Une erreur est survenue.',
+  cancelBtn: 'Annuler',
 };
