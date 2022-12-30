@@ -57,7 +57,7 @@ const handleDate = (date: Date | null): void => {
     inset: 0;
   }
   &::before {
-    background-image: url('/img/hero-background.png');
+    background-image: url('/img/hero-background.webp');
     background-repeat: no-repeat;
     background-size: cover;
     opacity: 0.6;
