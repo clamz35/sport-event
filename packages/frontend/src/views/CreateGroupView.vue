@@ -11,8 +11,8 @@
       </FloatLabel>
 
       <template v-slot:actions>
-        <Button theme="secondary">Annuler</Button>
-        <Button :disabled="!form.name" type="submit">Créer le nouveau groupe</Button>
+        <Button theme="neutral" @click="cancel">{{ t('cancelBtn') }}</Button>
+        <Button :disabled="!form.name" type="submit">{{ t('createNewGroupSubmitBtn') }}</Button>
       </template>
     </FormCard>
   </div>
@@ -22,6 +22,7 @@
 import FormCard from '@/components/FormCard.vue';
 import GroupNameField from '@/components/group/GroupNameField.vue';
 import { useGroupCreateForm } from '@/composables/group/form/useGroupCreateForm';
+import { useFormCancel } from '@/composables/useFormCancel';
 import Button from 'ui/Button.vue';
 import ErrorContainer from 'ui/ErrorContainer.vue';
 import FloatLabel from 'ui/FloatLabel.vue';
@@ -29,6 +30,7 @@ import Input from 'ui/Input.vue';
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
+const cancel = useFormCancel();
 
 const { form, handleSubmit, createGroupSubmitError } = useGroupCreateForm();
 </script>

@@ -4,6 +4,7 @@ export default {
   createNewGroupBtnLabel: 'Create a group',
   createNewEventBtnLabel: 'Create an event',
   createGroupSubmitError: 'Error occured during creation of the group',
+  createNewGroupSubmitBtn: 'Create the new group',
   createNewGroupFormTitle: 'Create a new group',
   createNewEventFormTitle: 'Create a new event',
   createNewEventSubmitBtn: 'Create the new event',
