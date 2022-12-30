@@ -1,4 +1,7 @@
 export default {
+  homeHeroTitle: 'Créez vos évènements sportifs',
+  homeHeroDescription:
+    "Organisez vos évènements sportifs facilement avec vos amis. Pas besoin d'inscription !",
   createNewGroupBtnLabel: 'Créer un groupe',
   createNewEventBtnLabel: 'Créer un évènement',
   createGroupSubmitError: 'Une erreur est survenue lors de la création du groupe',

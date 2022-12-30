@@ -1,4 +1,6 @@
 export default {
+  homeHeroTitle: 'Create your sports events',
+  homeHeroDescription: 'Organize your sports events easily with your friends. No need to register!',
   createNewGroupBtnLabel: 'Create a group',
   createNewEventBtnLabel: 'Create an event',
   createGroupSubmitError: 'Error occured during creation of the group',
