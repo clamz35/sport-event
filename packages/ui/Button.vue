@@ -6,6 +6,7 @@
       'button--primary': theme === 'primary',
       'button--secondary': theme === 'secondary',
       'button--error': theme === 'error',
+      'button--fluid': fluid,
     }"
     :disabled="disabled"
   >
@@ -17,10 +18,12 @@
 withDefaults(
   defineProps<{
     theme?: 'primary' | 'secondary' | 'error' | 'warning' | 'neutral';
+    fluid?: boolean;
     disabled?: boolean;
   }>(),
   {
     theme: 'primary',
+    fluid: false,
     disabled: false,
   },
 );
@@ -37,6 +40,10 @@ withDefaults(
 
   &[disabled] {
     cursor: default;
+  }
+
+  &--fluid {
+    width: 100%;
   }
 
   &--primary {

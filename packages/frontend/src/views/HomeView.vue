@@ -18,6 +18,7 @@ import HomeHeroCalendar from '@/components/home/HomeHeroCalendar.vue';
 </script>
 
 <style scoped lang="scss">
+@use '/src/assets/styles/mixins' as m;
 .wrapper {
   position: relative;
   isolation: isolate;
@@ -55,5 +56,14 @@ import HomeHeroCalendar from '@/components/home/HomeHeroCalendar.vue';
   justify-content: space-evenly;
 
   color: hsl(var(--primary-contrast));
+}
+
+@include m.md-down {
+  .home-view {
+    flex-direction: column;
+    gap: 2rem;
+    padding-inline: 2rem;
+    padding-bottom: 4rem;
+  }
 }
 </style>

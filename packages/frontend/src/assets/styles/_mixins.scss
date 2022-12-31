@@ -1,0 +1,49 @@
+@mixin sd-down {
+  @media (max-width: 599px) {
+    @content;
+  }
+}
+@mixin sd-up {
+  @media (min-width: 600px) {
+    @content;
+  }
+}
+
+@mixin md-down {
+  @media (max-width: 899px) {
+    @content;
+  }
+}
+@mixin md-up {
+  @media (min-width: 900px) {
+    @content;
+  }
+}
+@mixin ld-down {
+  @media (min-width: 1199px) {
+    @content;
+  }
+}
+@mixin ld-up {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+@mixin for-big-desktop-up {
+  @media (min-width: 1800px) {
+    @content;
+  }
+}
+
+@mixin addHoverToAccentBgColorElts {
+  transition: background-color 0.2s ease-in-out;
+  &:hover {
+    background-color: var(--clr-accent-400);
+  }
+}
+@mixin addHoverToAccentImgElts {
+  transition: filter 0.2s ease-in-out;
+  &:hover {
+    filter: brightness(1.5);
+  }
+}

@@ -22,9 +22,10 @@ const handleDate = (date: Date | null): void => {
 </script>
 
 <style lang="scss">
+@use 'src/assets/styles/mixins' as m;
 .home-calendar {
   border-radius: 8px;
-  width: 600px;
+  width: min(600px, 100%);
   padding-block: 2rem;
   .dp__month_year_row {
     margin-bottom: 1rem;
@@ -50,5 +51,8 @@ const handleDate = (date: Date | null): void => {
     width: $cellSize;
     height: $cellSize;
   }
+}
+
+@include m.md-down {
 }
 </style>
