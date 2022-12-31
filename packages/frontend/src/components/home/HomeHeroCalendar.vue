@@ -47,12 +47,15 @@ const handleDate = (date: Date | null): void => {
     height: 60px;
   }
   .dp__cell_inner {
-    $cellSize: 3.125rem;
-    width: $cellSize;
-    height: $cellSize;
+    $defaultCellSize: 3.125rem;
+    width: var(--cell-size, $defaultCellSize);
+    height: var(--cell-size, $defaultCellSize);
   }
 }
 
 @include m.md-down {
+  .home-calendar {
+    --cell-size: 1.125rem;
+  }
 }
 </style>

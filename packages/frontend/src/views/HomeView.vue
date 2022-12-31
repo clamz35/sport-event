@@ -5,7 +5,7 @@
         <HomeHeroDescription></HomeHeroDescription>
       </div>
 
-      <div>
+      <div class="home-view__calendar">
         <HomeHeroCalendar></HomeHeroCalendar>
       </div>
     </div>
@@ -53,17 +53,27 @@ import HomeHeroCalendar from '@/components/home/HomeHeroCalendar.vue';
 
 .home-view {
   display: flex;
+  gap: 2rem;
   justify-content: space-evenly;
+  padding-inline: 2rem;
 
   color: hsl(var(--primary-contrast));
+
+  &__calendar {
+    flex: 1;
+    max-width: 600px;
+  }
 }
 
 @include m.md-down {
   .home-view {
     flex-direction: column;
-    gap: 2rem;
-    padding-inline: 2rem;
     padding-bottom: 4rem;
+    justify-content: flex-end;
+
+    &__calendar {
+      display: none;
+    }
   }
 }
 </style>
