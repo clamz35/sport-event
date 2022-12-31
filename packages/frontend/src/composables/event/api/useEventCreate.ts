@@ -21,6 +21,7 @@ export const useEventCreate = (): UseMutationReturnType<EventModel, unknown, Eve
           dateEnd,
           description,
           address,
+          players,
         }: z.infer<typeof eventDTOSchema>): EventModel => {
           return {
             id,
@@ -29,6 +30,7 @@ export const useEventCreate = (): UseMutationReturnType<EventModel, unknown, Eve
             dateEnd: new Date(dateEnd),
             description,
             address,
+            players,
           };
         },
       );
