@@ -22,7 +22,6 @@ import HomeHeroCalendar from '@/components/home/HomeHeroCalendar.vue';
 .wrapper {
   position: relative;
   isolation: isolate;
-  padding-top: 14rem;
 
   &::before,
   &::after {
@@ -62,6 +61,12 @@ import HomeHeroCalendar from '@/components/home/HomeHeroCalendar.vue';
   &__calendar {
     flex: 1;
     max-width: 600px;
+  }
+}
+
+@include m.md-up {
+  .wrapper {
+    padding-top: 14rem;
   }
 }
 
