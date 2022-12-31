@@ -38,6 +38,10 @@ const { t } = useI18n();
 
 @include m.md-down {
   .home-hero-description {
+    &__title {
+      line-height: 1.1;
+      margin-bottom: 0.4em;
+    }
     &__actions {
       flex-direction: column;
       align-items: stretch;
