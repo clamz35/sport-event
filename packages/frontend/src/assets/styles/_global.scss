@@ -44,7 +44,7 @@ h2,
 #app {
   display: grid;
   grid-template-rows: min-content 1fr;
-  min-height: 100dvh;
+  min-height: 100svh;
   background-color: hsl(var(--neutral-100));
 }
 
