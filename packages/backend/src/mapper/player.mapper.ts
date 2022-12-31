@@ -22,7 +22,7 @@ export class PlayerMapper implements Mapper<PlayerEntity, PlayerDTO> {
     return playerDTO;
   }
 
-  toEntity({ id, username, email, events }: PlayerDTO): PlayerEntity {
+  toEntity({}: PlayerDTO): PlayerEntity {
     // TODO
     return null;
   }

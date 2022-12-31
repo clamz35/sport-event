@@ -71,6 +71,7 @@ export const useEventCreateForm = (
         ...form.value,
         dateBegin: form.value.dateBegin.toISOString(),
         dateEnd: form.value.dateEnd.toISOString(),
+        players: [],
       },
       {
         onSuccess(eventCreated: EventModel): void {

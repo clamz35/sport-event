@@ -19,6 +19,11 @@ export const useEventGet = (
         ...eventDTO,
         dateBegin: new Date(eventDTO.dateBegin),
         dateEnd: new Date(eventDTO.dateEnd),
+        players: eventDTO.players?.map(({ id, username, email }) => ({
+          id,
+          username,
+          email,
+        })),
       } as EventModel;
     },
   });

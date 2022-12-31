@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { PlayerDTO, playerDTOSchema } from './player.dto';
+import { type PlayerDTO, playerDTOSchema } from './player.dto';
 
 export interface EventDTO {
   id?: number;
