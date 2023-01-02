@@ -28,6 +28,7 @@ const { t } = useI18n();
 </script>
 
 <style lang="scss" scoped>
+@use 'src/assets/styles/mixins' as m;
 .form-card {
   &__title {
     padding-bottom: 2.625rem;
@@ -44,6 +45,14 @@ const { t } = useI18n();
     gap: 0.5rem;
     justify-content: flex-end;
     margin-top: 3rem;
+  }
+}
+
+@include m.sd-down {
+  .form-card {
+    &__actions {
+      flex-direction: column;
+    }
   }
 }
 </style>

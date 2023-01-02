@@ -1,6 +1,6 @@
 <template>
-  <div class="sp-container-full sp-container-full--centered">
-    <FormCard title="createNewGroupFormTitle" @submit="handleSubmit()">
+  <div class="create-group sp-container-full sp-container-full--centered">
+    <FormCard class="create-group__card" title="createNewGroupFormTitle" @submit="handleSubmit()">
       <ErrorContainer v-if="createGroupSubmitError">
         {{ t('createGroupSubmitError') }}
       </ErrorContainer>
@@ -11,7 +11,9 @@
       </FloatLabel>
 
       <template v-slot:actions>
-        <Button theme="neutral" @click="cancel">{{ t('cancelBtn') }}</Button>
+        <Button theme="neutral" @click="cancel" class="create-group__cancel-button">{{
+          t('cancelBtn')
+        }}</Button>
         <Button :disabled="!form.name" type="submit">{{ t('createNewGroupSubmitBtn') }}</Button>
       </template>
     </FormCard>
@@ -35,4 +37,21 @@ const cancel = useFormCancel();
 const { form, handleSubmit, createGroupSubmitError } = useGroupCreateForm();
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@use 'src/assets/styles/mixins' as m;
+.create-group {
+  &__cancel-button {
+    order: 2;
+  }
+}
+
+@include m.sd-down {
+  .create-group {
+    align-items: stretch;
+
+    &__card {
+      width: 100%;
+    }
+  }
+}
+</style>

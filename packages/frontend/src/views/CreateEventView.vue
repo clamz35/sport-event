@@ -1,12 +1,14 @@
 <template>
-  <div class="sp-container-full sp-container-full--centered">
-    <FormCard title="createNewEventFormTitle" @submit="onSubmit">
+  <div class="create-event sp-container-full sp-container-full--centered">
+    <FormCard class="create-event__card" title="createNewEventFormTitle" @submit="onSubmit">
       <ErrorContainer v-if="createEventSubmitError">
         {{ t('createEventSubmitError') }}
       </ErrorContainer>
       <EventCreateForm v-model="form"></EventCreateForm>
       <template v-slot:actions>
-        <Button theme="neutral" @click="cancel">{{ t('cancelBtn') }}</Button>
+        <Button theme="neutral" @click="cancel" class="create-event__cancel-button">{{
+          t('cancelBtn')
+        }}</Button>
         <Button :disabled="!isValid" type="submit">{{ t('createNewEventSubmitBtn') }}</Button>
       </template>
     </FormCard>
@@ -14,15 +16,15 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n';
-import { useRoute, useRouter } from 'vue-router';
-import type { EventCreateForm as EventCreateFormModel } from '@/models/event/form/EventCreateForm';
-import { useEventCreateForm } from '@/composables/event/form/useEventCreateForm';
 import EventCreateForm from '@/components/event/EventCreateForm.vue';
 import FormCard from '@/components/FormCard.vue';
+import { useEventCreateForm } from '@/composables/event/form/useEventCreateForm';
+import { useFormCancel } from '@/composables/useFormCancel';
+import type { EventCreateForm as EventCreateFormModel } from '@/models/event/form/EventCreateForm';
 import Button from 'ui/Button.vue';
 import ErrorContainer from 'ui/ErrorContainer.vue';
-import { useFormCancel } from '@/composables/useFormCancel';
+import { useI18n } from 'vue-i18n';
+import { useRoute } from 'vue-router';
 
 const { t } = useI18n();
 
@@ -36,3 +38,21 @@ const { form, onSubmit, createEventSubmitError, isValid } = useEventCreateForm(i
 
 const cancel = useFormCancel();
 </script>
+
+<style scoped lang="scss">
+@use 'src/assets/styles/mixins' as m;
+.create-event {
+  &__cancel-button {
+    order: 2;
+  }
+}
+
+@include m.sd-down {
+  .create-event {
+    align-items: stretch;
+    &__card {
+      width: 100%;
+    }
+  }
+}
+</style>
