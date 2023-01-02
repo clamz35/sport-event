@@ -1,6 +1,13 @@
 <template>
   <div class="create-group sp-container-full sp-container-full--centered">
-    <FormCard class="create-group__card" title="createNewGroupFormTitle" @submit="handleSubmit()">
+    <FormCard
+      class="create-group__card"
+      title="createNewGroupFormTitle"
+      submitBtnI18nLabel="createNewGroupSubmitBtn"
+      :submitIsDisabled="!form.name"
+      @submit="handleSubmit()"
+      @cancel="cancel"
+    >
       <ErrorContainer v-if="createGroupSubmitError">
         {{ t('createGroupSubmitError') }}
       </ErrorContainer>
@@ -9,13 +16,6 @@
       <FloatLabel id="email" label="Votre email (Optionnel) :">
         <Input v-model="form.creatorEmail" id="email" name="email"></Input>
       </FloatLabel>
-
-      <template v-slot:actions>
-        <Button theme="neutral" @click="cancel" class="create-group__cancel-button">{{
-          t('cancelBtn')
-        }}</Button>
-        <Button :disabled="!form.name" type="submit">{{ t('createNewGroupSubmitBtn') }}</Button>
-      </template>
     </FormCard>
   </div>
 </template>
@@ -25,7 +25,6 @@ import FormCard from '@/components/FormCard.vue';
 import GroupNameField from '@/components/group/GroupNameField.vue';
 import { useGroupCreateForm } from '@/composables/group/form/useGroupCreateForm';
 import { useFormCancel } from '@/composables/useFormCancel';
-import Button from 'ui/Button.vue';
 import ErrorContainer from 'ui/ErrorContainer.vue';
 import FloatLabel from 'ui/FloatLabel.vue';
 import Input from 'ui/Input.vue';
@@ -39,11 +38,6 @@ const { form, handleSubmit, createGroupSubmitError } = useGroupCreateForm();
 
 <style lang="scss" scoped>
 @use 'src/assets/styles/mixins' as m;
-.create-group {
-  &__cancel-button {
-    order: 2;
-  }
-}
 
 @include m.sd-down {
   .create-group {

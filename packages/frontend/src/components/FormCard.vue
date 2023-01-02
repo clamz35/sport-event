@@ -6,22 +6,37 @@
         <slot></slot>
       </div>
       <div class="form-card__actions">
-        <slot name="actions"></slot>
+        <slot name="actions">
+          <Button theme="neutral" @click="$emit('cancel')" class="form-card__cancel-button">
+            {{ t('cancelBtn') }}
+          </Button>
+          <Button :disabled="submitIsDisabled" type="submit">{{ t(submitBtnI18nLabel) }}</Button>
+        </slot>
       </div>
     </form>
   </Card>
 </template>
 
 <script setup lang="ts">
+import Button from 'ui/Button.vue';
 import Card from 'ui/Card.vue';
 import { useI18n } from 'vue-i18n';
 
-defineProps<{
-  title: string;
-}>();
+withDefaults(
+  defineProps<{
+    title: string;
+    submitIsDisabled?: boolean;
+    submitBtnI18nLabel?: string;
+  }>(),
+  {
+    submitIsDisabled: false,
+    submitBtnI18nLabel: 'formCardSubmitBtn',
+  },
+);
 
 defineEmits<{
   (e: 'submit', event: Event): void;
+  (e: 'cancel'): void;
 }>();
 
 const { t } = useI18n();
@@ -52,6 +67,9 @@ const { t } = useI18n();
   .form-card {
     &__actions {
       flex-direction: column;
+    }
+    &__cancel-button {
+      order: 2;
     }
   }
 }

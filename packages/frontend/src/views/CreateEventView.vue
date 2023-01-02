@@ -1,16 +1,17 @@
 <template>
   <div class="create-event sp-container-full sp-container-full--centered">
-    <FormCard class="create-event__card" title="createNewEventFormTitle" @submit="onSubmit">
+    <FormCard
+      class="create-event__card"
+      title="createNewEventFormTitle"
+      submitBtnI18nLabel="createNewEventSubmitBtn"
+      :submitIsDisabled="!isValid"
+      @submit="onSubmit"
+      @cancel="onCancel"
+    >
       <ErrorContainer v-if="createEventSubmitError">
         {{ t('createEventSubmitError') }}
       </ErrorContainer>
       <EventCreateForm v-model="form"></EventCreateForm>
-      <template v-slot:actions>
-        <Button theme="neutral" @click="cancel" class="create-event__cancel-button">{{
-          t('cancelBtn')
-        }}</Button>
-        <Button :disabled="!isValid" type="submit">{{ t('createNewEventSubmitBtn') }}</Button>
-      </template>
     </FormCard>
   </div>
 </template>
@@ -21,7 +22,6 @@ import FormCard from '@/components/FormCard.vue';
 import { useEventCreateForm } from '@/composables/event/form/useEventCreateForm';
 import { useFormCancel } from '@/composables/useFormCancel';
 import type { EventCreateForm as EventCreateFormModel } from '@/models/event/form/EventCreateForm';
-import Button from 'ui/Button.vue';
 import ErrorContainer from 'ui/ErrorContainer.vue';
 import { useI18n } from 'vue-i18n';
 import { useRoute } from 'vue-router';
@@ -36,7 +36,7 @@ if (typeof query.dateBegin === 'string') {
 }
 const { form, onSubmit, createEventSubmitError, isValid } = useEventCreateForm(initialFormValues);
 
-const cancel = useFormCancel();
+const onCancel = useFormCancel();
 </script>
 
 <style scoped lang="scss">

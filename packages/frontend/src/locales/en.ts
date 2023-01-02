@@ -20,4 +20,5 @@ export default {
   notFoundError: 'Error: not found.',
   serverError: 'An error is occured.',
   cancelBtn: 'Cancel',
+  formCardSubmitBtn: 'Submit',
 };

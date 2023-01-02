@@ -21,4 +21,5 @@ export default {
   notFoundError: "Erreur: L'élément n'existe pas.",
   serverError: 'Une erreur est survenue.',
   cancelBtn: 'Annuler',
+  formCardSubmitBtn: 'Envoyer',
 };

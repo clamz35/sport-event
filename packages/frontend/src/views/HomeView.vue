@@ -54,6 +54,7 @@ import HomeHeroCalendar from '@/components/home/HomeHeroCalendar.vue';
   display: flex;
   gap: 2rem;
   justify-content: space-evenly;
+  align-items: center;
   padding-inline: 2rem;
 
   color: hsl(var(--primary-contrast));
@@ -66,7 +67,7 @@ import HomeHeroCalendar from '@/components/home/HomeHeroCalendar.vue';
 
 @include m.md-up {
   .wrapper {
-    padding-top: 14rem;
+    align-items: center;
   }
 }
 
