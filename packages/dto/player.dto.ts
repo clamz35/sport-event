@@ -9,8 +9,8 @@ export interface PlayerDTO {
 }
 
 export const playerDTOSchema = z.object({
-  id: z.number().optional(),
+  id: z.number().optional().nullable(),
   username: z.string(),
-  email: z.string().optional(),
+  email: z.string().optional().nullable(),
   // events: z.array(eventDTOSchema),
 });

@@ -5,8 +5,10 @@
     :class="{
       'button--primary': theme === 'primary',
       'button--secondary': theme === 'secondary',
+      'button--transparent': theme === 'transparent',
       'button--error': theme === 'error',
       'button--fluid': fluid,
+      'button--small': size === 'sm',
     }"
     :disabled="disabled"
   >
@@ -17,21 +19,23 @@
 <script setup lang="ts">
 withDefaults(
   defineProps<{
-    theme?: 'primary' | 'secondary' | 'error' | 'warning' | 'neutral';
+    theme?: 'primary' | 'secondary' | 'error' | 'warning' | 'neutral' | 'transparent';
     fluid?: boolean;
     disabled?: boolean;
+    size?: 'sm' | 'm' | 'l';
   }>(),
   {
     theme: 'primary',
     fluid: false,
     disabled: false,
+    size: 'm',
   },
 );
 </script>
 
 <style scoped lang="scss">
 .button {
-  border-radius: var(--rounded-700);
+  border-radius: var(--rounded-300);
   padding: 1rem 32px;
   line-height: 1;
   font-weight: 500;
@@ -46,6 +50,10 @@ withDefaults(
     width: 100%;
   }
 
+  &--small {
+    padding: 0.5rem 16px;
+  }
+
   &--primary {
     background-color: hsl(var(--accent));
     color: hsl(var(--primary));
@@ -57,6 +65,18 @@ withDefaults(
     &:not([disabled]):hover {
       border-color: hsl(var(--accent));
       background-color: hsl(var(--accent) / 0.5);
+    }
+  }
+
+  &--transparent {
+    color: hsl(var(--primary));
+    background-color: transparent;
+
+    &[disabled] {
+      color: hsl(var(--neutral-500));
+    }
+    &:not([disabled]):hover {
+      background-color: hsl(var(--neutral-100));
     }
   }
 

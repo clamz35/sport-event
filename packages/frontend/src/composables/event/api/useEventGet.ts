@@ -1,14 +1,15 @@
+import { useQuery, type UseQueryReturnType } from '@tanstack/vue-query';
+import type { z } from 'zod';
+import { eventDTOSchema } from 'dto/event.dto';
 import { useGet } from '@/composables/fetch/useGet';
 import type { EventModel } from '@/models/event/Event';
-import { useQuery, type UseQueryReturnType } from '@tanstack/vue-query';
-import { eventDTOSchema } from 'dto/event.dto';
-import type { z } from 'zod';
+import { EVENT_GET_KEY } from './eventsApiKeys.constants';
 
 export const useEventGet = (
   eventId: number,
 ): UseQueryReturnType<EventModel, { statusCode: number; message: string }> => {
   return useQuery({
-    queryKey: ['events', eventId],
+    queryKey: EVENT_GET_KEY(eventId),
     queryFn: async () => {
       const eventDTO = await useGet<z.infer<typeof eventDTOSchema>>(
         `/api/events/${eventId}`,

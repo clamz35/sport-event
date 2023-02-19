@@ -1,12 +1,22 @@
 <template>
-  <input
-    :type="type"
-    v-model="value"
+  <div
     class="input"
     :class="{
       'input--error': error,
     }"
-  />
+  >
+    <input
+      v-model="value"
+      class="input__field"
+      autocomplete="off"
+      :class="{
+        'input__field--error': error,
+      }"
+      :type="type"
+      :placeholder="placeholder"
+    />
+    <slot></slot>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -17,6 +27,7 @@ const props = withDefaults(
     modelValue?: string | Date | number | null;
     type?: 'text' | 'date' | 'number' | 'datetime-local';
     error?: boolean;
+    placeholder?: string;
   }>(),
   {
     modelValue: '',
@@ -39,17 +50,41 @@ const value = computed({
 
 <style scoped lang="scss">
 .input {
+  display: flex;
+  background-color: hsl(var(--primary-contrast));
   border-radius: var(--rounded-300);
   border: 1px solid hsl(var(--neutral-300));
-  padding: 0.5rem 8px;
   width: 100%;
+  &:focus,
+  &:focus-within,
+  &:focus-visible {
+    border-color: hsl(var(--neutral-500));
+  }
 
   &--error {
     border-color: hsl(var(--error), 0.4);
-    background-color: hsl(var(--error), 0.2);
 
+    &:focus,
+    &:focus-within,
+    &:focus-visible {
+      border-color: hsl(var(--error));
+    }
+  }
+
+  &__field {
+    flex: 1;
+    border: none;
+    padding: 0.5rem 8px;
     &:focus {
-      outline-color: hsl(var(--error));
+      outline: 0;
+    }
+
+    &::placeholder {
+      color: hsl(var(--neutral-500));
+    }
+
+    &--error {
+      background-color: hsl(var(--error), 0.2);
     }
   }
 }

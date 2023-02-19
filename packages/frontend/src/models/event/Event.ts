@@ -1,7 +1,7 @@
 import type { Player } from '../player/Player';
 
 export interface EventModel {
-  id?: number;
+  id?: number | null;
   name: string;
   dateBegin: Date;
   dateEnd: Date;

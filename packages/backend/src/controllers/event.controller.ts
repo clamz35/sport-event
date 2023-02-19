@@ -47,8 +47,10 @@ export class EventController {
     return eventMapper.toDto(newEventEntity);
   }
 
-  @Patch('/:id/players')
-  async addPlayer(@Param() eventId, @Body() player: PlayerDTO): Promise<void> {
-    return this.eventService.addPlayer(eventId, player);
+  @Post('/:id/players')
+  async addPlayer(@Param() eventId, @Body() player: PlayerDTO): Promise<EventDTO> {
+    await this.eventService.addPlayer(eventId, player);
+
+    return this.find(eventId);
   }
 }

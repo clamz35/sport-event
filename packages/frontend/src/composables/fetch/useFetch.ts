@@ -1,5 +1,3 @@
-import { z } from 'zod';
-
 export const useFetch = async <ResponseSchemaType>(
   url: string,
   responseSchema: z.ZodType<ResponseSchemaType>,
@@ -17,6 +15,6 @@ export const useFetch = async <ResponseSchemaType>(
   if (!response.ok) {
     throw await response.json();
   }
-
-  return z.promise(responseSchema).parse(response.json());
+  const data = await response.json();
+  return responseSchema.parse(data);
 };

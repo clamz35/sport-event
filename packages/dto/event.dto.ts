@@ -14,7 +14,7 @@ export interface EventDTO {
 }
 
 export const eventDTOSchema = z.object({
-  id: z.number().optional(),
+  id: z.number().optional().nullable(),
   name: z.string(),
   dateBegin: z.string().datetime(),
   dateEnd: z.string().datetime(),

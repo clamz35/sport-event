@@ -1,6 +1,11 @@
 <template>
   <FloatLabel id="eventName" label="eventNameInputLabel">
-    <Input id="eventName" name="eventName" v-model="form.name"></Input>
+    <Input
+      id="eventName"
+      name="eventName"
+      v-model="form.name"
+      :error="form.nameError !== undefined"
+    ></Input>
     <span v-if="form.nameError">{{ t(form.nameError) }}</span>
   </FloatLabel>
   <FloatLabel id="eventAddress" label="eventAddressInputLabel">

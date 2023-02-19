@@ -1,12 +1,11 @@
-import { computed, ref, type ComputedRef, type Ref } from 'vue';
-import { useRouter } from 'vue-router';
 import { useField, useForm } from 'vee-validate';
 import { toFormValidator } from '@vee-validate/zod';
-import type { EventCreateForm } from '@/models/event/form/EventCreateForm';
-import type { EventDTO } from 'dto/event.dto';
-import { useEventCreate } from '../api/useEventCreate';
+import { computed, ref, type ComputedRef, type Ref } from 'vue';
+import { useRouter } from 'vue-router';
 import { z } from 'zod';
 import type { EventModel } from '@/models/event/Event';
+import type { EventCreateForm } from '@/models/event/form/EventCreateForm';
+import { useEventCreate } from '../api/useEventCreate';
 
 type EventCreateFormRef = Ref<EventCreateForm>;
 
@@ -50,6 +49,7 @@ export const useEventCreateForm = (
   const { value: dateEnd } = useField<Date>('dateEnd');
   const { value: description } = useField<string>('description');
   const { value: address } = useField<string>('address');
+
   const form: EventCreateFormRef = ref({
     name,
     nameError,
